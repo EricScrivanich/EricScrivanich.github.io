@@ -103,8 +103,8 @@ body {
   .card2 article{
     height: 12em;
     background-color: rgb(0, 0, 0,0.385);
-    border-top: 0.2em solid darkblue;
-    border-bottom: 0.2em solid darkblue;
+    border-top: 0.15em solid darkblue;
+    border-bottom: 0.15em solid darkblue;
    
   }
   
