@@ -21,11 +21,11 @@
     margin: 20px auto;
     background-color: white;
     position: relative;
-    background-image: url(top-image.png), url(bottom-image.png);
-    background-position:top center, bottom center;
-    background-repeat: no-repeat, no-repeat;
+    background-image: url(top-image.png), url(bottom-image.png), linear-gradient(to bottom, rgba(169, 169, 169, 0.6) 0%, rgba(255, 255, 255, .3) 10%, rgba(255, 255, 255, 0) 90%, rgba(169, 169, 169, 0.6) 100%);
+    background-position: top center, bottom center; 
+    background-repeat: no-repeat, no-repeat, no-repeat; 
   }
-  
+ 
   
   address {
     position: absolute;
