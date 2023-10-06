@@ -1,8 +1,9 @@
 .container{
-    position: relative;
-    top: 30%;
-    left: 20%;
+    position: absolute;
+    top: 30px;
+    left: 40px;
     width: 1200px;
+
     
     
 }
@@ -11,13 +12,92 @@
     min-width: 90%;
 }
 .topLeft{
-    position: re;
+    padding: 5px;
+    position: absolute;
     top: 20px;
     left: 40px;
 }
 
-.channel43{
+
+.breakingNews{
+    
+    position: absolute;
+    left: 10px;
+    top: 15px;
     background-color: darkblue;
- 
+    width: 220px;
+    height: 70px;
+    border: 5px solid rgb(186, 13, 13);
+    border-radius: 5%;
+    font-size: 35px;
+    
+    text-align: center;
+    line-height: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+.channel{
+    position: absolute;
+    background-color: rgba(35, 35, 122, 0.775);
+    left: 900px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    
+}
+.channel p{
+    position: relative;
+    font-size: 50px;
+    bottom: 37px;
+    left: 17px;
+    
+    
+
+    
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.672);
 
 }
+
+.bottom 
+{
+    position: absolute;
+   
+    left: 19px;
+    top: 460px;
+    width: 87%; 
+    height: 115px;
+    
+  
+    
+    background-image: linear-gradient(to right, darkgray 50%,lightgray 100% );
+  
+    border-top: 5px solid rgb(83, 82, 82);
+    border-bottom: 5px solid rgb(83, 82, 82);   
+    
+}
+.text{
+
+   position: relative;
+   bottom: 65px;
+   left: 30px;
+    
+    font-size:80px;
+    
+    
+  
+    
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+
+}
+
+
+ 
+
