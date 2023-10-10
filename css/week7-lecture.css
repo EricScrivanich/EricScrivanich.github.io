@@ -1,0 +1,31 @@
+body{
+    background-color: green;
+}
+.div-wrapper{
+    display: flex;
+}
+
+ div div{
+    background-color: blue;
+    color: white;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 50px;
+    margin: 25px;
+    border: yellow 5px solid;
+}
+
+
+@media all and (max-width: 900px) { 
+
+body{
+    background-color: red;
+}
+
+.div-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+
+}
