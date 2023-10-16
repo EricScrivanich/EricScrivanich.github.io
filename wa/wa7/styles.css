@@ -1,82 +1,82 @@
 body {
-    background-color: #fff;
-    color: #333;
-    margin: 0;
-    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
-  }
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
+}
 
-  img {
-      max-width: 100%;
-      margin: 10px;
-      float: left;
-      
-  }
-  
-  .logo {
-    font-size: 200%;
-    padding: 50px 20px;
-    margin: 0 0;
-    max-width: 980px;
-  }
-  
-  .grid {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 980px;
-  }
-  
-  nav {
-    position: sticky;
-    top: 0;
-    background-color: #000;
-    padding: .5em;
-   
-  }
-  
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.logo {
+  font-size: 200%;
+  padding: 50px 20px;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.grid {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 980px;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 60% 30%;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  padding: .5em;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: .5em 1em;
+}
+
+.photos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-gap: 1px;
+}
+
+.feature {
+    width: 200px;
+}
+
+nav a, ul{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+img {
+  float: left;
+  padding-right: 1em;
+}
+
+@media screen and (max-width: 500px) {
+  .grid, nav ul, .photos {
     display: flex;
-    
+    flex-direction: column;
   }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: .5em 1em;
-  }
-  
-  .photos {
-    list-style: none;
-    width: 45vw;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin: 0;
-    padding: 0;
-  }
-
-  .feature {
-      width: 200px;
-  }
-  .grid {
-    position: absolute;
-    left: 0;
-    display: grid;
-   
-    grid-template-columns: 40vw 5vw 40vw;
-   
-
-  }
-  aside{
-    grid-column: 3/3;
-  }
-
-  @media screen and (min-height: 500px){
-    
-  }
-
+}
 
  
 
