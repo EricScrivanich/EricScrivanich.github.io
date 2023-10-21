@@ -35,11 +35,11 @@ img{
     left:5vw;
     top:0;
 }
-#stars {
+/* #stars {
     position: absolute;
     top: -10%;
     left: 100%;
-}
+} */
 
 #stars img {
     width: 10%;
@@ -51,20 +51,29 @@ img{
 
 .star1{
     position: absolute;
-    animation: 5s infinite  alternate star1Move ease-in
+    animation: 3s infinite normal star1Move ease-out 
 }
 
 @keyframes star1Move
 {
     from { 
-        right: 0;
-        top: 0;
+        left: 80%;
+        top: -10em;
+        opacity: 100%;
+        transform: rotate(0);
        }
+
+    75% {
+        transform: rotate(50deg);
+        opacity: 40%;
+    }
      
        
        to{
-           right: 50%;
+           left: 10%;
            top: 90%;
+           opacity: 10%;
+           transform: rotate(55deg);
        }
 }
 
