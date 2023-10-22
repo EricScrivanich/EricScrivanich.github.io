@@ -54,11 +54,7 @@ h1 {
     height: 50vh;
    
 }
-#mainStar:hover {
-    animation-name: rotate;
-    animation-delay: 1s;
-    animation-duration: 2s;
-}
+
 
 #stars img {
     width: 10%;
@@ -107,15 +103,17 @@ h1 {
     animation-timing-function: ease-out;
     animation-iteration-count: infinite;
 }
-@keyframes rotate {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 
-
+#mainStar:hover {
+    animation-name: rotate;
+    animation-delay: 1s;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+   
+    
+    
+   
 }
 
 @keyframes star1Move
@@ -127,20 +125,7 @@ h1 {
         transform: rotate(0);
        }
 
-    49% {
-        left: 10%;
-        top: 90%;
-        opacity: 15%;
-        transform: rotate(55deg);
-
-    }
-    50% {
-        left: 80%;
-        top: -10em;
-        opacity: 0%;
-        transform: rotate(0deg);
-
-    }
+   
 
      
        
@@ -162,22 +147,7 @@ h1 {
         transform: rotate(0);
        }
 
-    49% {
-        left: 5%;
-        top: 85%;
-        opacity: 15%;
-        transform: rotate(70deg);
-
-    }
-    50% {
-       
-        left: 5%;
-        top: 85%;
-        opacity: 0%;
-        transform: rotate(71deg);
-        
-
-    }
+    
  
        to{
         left: 5%;
@@ -197,20 +167,7 @@ h1 {
         transform: rotate(0);
        }
 
-    49% {
-        left: 50%;
-        top: 95%;
-        opacity: 15%;
-        transform: rotate(55deg);
-
-    }
-    50% {
-        left: 50%;
-        top: 95%;
-        opacity: 0%;
-        transform: rotate(56deg);
-
-    }
+  
 
      
        
@@ -222,5 +179,17 @@ h1 {
            
        }
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+
+
+}
+
 
 

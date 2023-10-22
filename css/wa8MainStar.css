@@ -1,0 +1,28 @@
+#mainStar {
+    background-image: url("/../img/GoldStar.png");
+    margin-top: 10vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    height: 50vh;
+   
+}
+#mainStar:hover {
+    animation-name: rotate;
+    animation-delay: 1s;
+    animation-duration: 2s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+
+
+}
