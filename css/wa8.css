@@ -42,7 +42,7 @@ h1 {
     height: 30%;
 
 } */
-#mainStar {
+.mainStar {
     background-image: url("/../img/GoldStar.png");
     margin-top: 10vh;
     background-size: contain;
@@ -104,7 +104,7 @@ h1 {
     animation-iteration-count: infinite;
 }
 
-#mainStar:hover {
+.mainStar:hover {
     animation-name: rotate;
     animation-delay: 1s;
     animation-duration: 4s;
