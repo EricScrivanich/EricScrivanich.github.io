@@ -12,12 +12,13 @@ nav{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    height:20px;
+    height:25px;
     background-color: rgb(236, 218, 60);
 }
 nav a{
     width:10vw;
     text-align: center;
+    font-family: "Sofia", sans-serif;
     text-decoration: none;
     color:rgb(32, 13, 126);
 }
@@ -32,21 +33,11 @@ h1 {
 
 
 
-/* #stars {
-    position: absolute;
-    top: -10%;
-    left: 100%;
-} */
-/* #mainStar img {
-    width: 30%;
-    height: 30%;
 
-} */
 .mainStar {
     background-image: url("/../img/GoldStar.png");
     margin-top: 10vh;
-    top: 50%;
-    left: 50%;
+   
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,7 +45,13 @@ h1 {
     justify-content: center;
     width: 50vw;
     height: 50vh;
+    transform: rotate(0deg);
+    
+    transition: 4s 1s all ease-in-out;
    
+}
+.mainStar:hover {
+    transform: rotate(360deg);
 }
 
 
@@ -68,19 +65,9 @@ h1 {
     
 }
 
-.star1{
-    position: absolute;
-    left: 80%;
-    top: -10em;
-   
-  
-    animation-delay: 0s;
-    animation-duration: 8s;
-    animation-name: star1Move;
-    animation-direction: normal;
-    animation-timing-function: ease-out;
-    animation-iteration-count: infinite;
-}
+
+
+
 
 .star2{
     position: absolute;
@@ -108,39 +95,9 @@ h1 {
     animation-iteration-count: infinite;
 }
 
-.mainStar:hover {
-    animation-name: rotate;
-    animation-delay: 1s;
-    animation-duration: 4s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-   
-    
-    
-   
-}
 
-@keyframes star1Move
-{
-    from { 
-        left: 80%;
-        top: -10em;
-        opacity: 100%;
-        transform: rotate(0);
-       }
 
-   
 
-     
-       
-       to{
-        left: 80%;
-        top: -10em;
-        opacity: 0%;
-        transform: rotate(0deg);
-           
-       }
-}
 
 @keyframes star2Move
 {
@@ -148,7 +105,7 @@ h1 {
         left: 70%;
         top: -10em;
         opacity: 100%;
-        transform: rotate(0);
+        
        }
 
     
@@ -157,7 +114,7 @@ h1 {
         left: 5%;
         top: 85%;
         opacity: 0%;
-        transform: rotate(0deg);
+        
            
        }
 }
@@ -168,7 +125,7 @@ h1 {
         left: 90%;
         top: -10em;
         opacity: 100%;
-        transform: rotate(0);
+        
        }
 
   
@@ -179,21 +136,21 @@ h1 {
         left: 50%;
         top: 95%;
         opacity: 0%;
-        transform: rotate(0deg);
+        
            
        }
 }
 
-@keyframes rotate {
+/* @keyframes rotate {
     from {
         transform: rotate(0);
     }
     to {
         transform: rotate(360deg);
-    }
+    } */
 
 
-}
+
 
 
 
