@@ -1,3 +1,8 @@
+body{
+    background-color: bisque;
+}
+
+
 h4{
     margin-top: 2px;
     font-style: italic;
@@ -5,5 +10,30 @@ h4{
 }
 h2{
     margin-bottom: 0;
+    
+} 
+.events{
+    display: flex;
+   
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+    
+    
+    
+}
+div {
+    margin: 3vw;
+    background-color: gold;
+    padding: 10px;
+    flex: 30vw;
+}
+
+@media screen and (max-width: 400px){ 
+    .events{
+        display: flex;
+        flex-direction: column;
+    }
+    
     
 }
