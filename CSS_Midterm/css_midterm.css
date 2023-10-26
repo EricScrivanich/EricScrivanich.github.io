@@ -1,5 +1,13 @@
 body{
     background-color: bisque;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   
+}
+
+
+.offset{
+    position: relative;
+    top: 80px;
 }
 
 
@@ -22,11 +30,18 @@ h2{
     
     
 }
-div {
+
+.intro{
+    margin: 10px;
+}
+.events div {
     margin: 3vw;
     background-color: gold;
     padding: 10px;
     flex: 30vw;
+    max-width: 40vw;
+    padding: 30px;
+    
 }
 
 @media screen and (max-width: 400px){ 
