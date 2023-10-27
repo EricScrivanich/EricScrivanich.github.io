@@ -1,7 +1,17 @@
 body{
-    background-color: bisque;
+    background-color: #f7f5d9;
+opacity: 1;
+background-size: 20px 20px;
+background-image:  repeating-linear-gradient(0deg, #444df783, #444df749 1px, #f7f5d9 1px, #f7f5d9);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    
+}
+h1 {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 90px;
+   
+    
 }
 
 
@@ -9,15 +19,22 @@ body{
     position: relative;
     top: 80px;
 }
+.offset:hover{
+    top: 75px;
+}
 
 
 h4{
     margin-top: 2px;
     font-style: italic;
-    font-weight: normal;
+    font-weight: 100;
+    font-size: 15px;
 }
 h2{
     margin-bottom: 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+
     
 } 
 .events{
@@ -36,12 +53,30 @@ h2{
 }
 .events div {
     margin: 3vw;
-    background-color: gold;
+    /* background-color: gold; */
+    background-image: url("img/paper.jpg");
+    background-repeat: no-repeat;
+    
+   
+    
+    background-size: cover;
     padding: 10px;
     flex: 30vw;
     max-width: 40vw;
+    height: 730px;
     padding: 30px;
     
+}
+.events div:hover{
+    position: relative;
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.575));
+    bottom: 5px;
+}
+ul {
+    list-style: square;
+}
+ul ul {
+    list-style: circle;
 }
 
 @media screen and (max-width: 400px){ 
@@ -49,6 +84,21 @@ h2{
         display: flex;
         flex-direction: column;
     }
+    .events div {
+        flex: 90vw;
+        max-width: fit-content;
+        margin: 3vw;
+    }
+    .offset {
+        position: relative;
+        top: 0;
+    }
+    h1{
+        font-size: 60px;
+    }
+    /* p  {
+        font-size: 10px;
+    } */
     
     
 }
