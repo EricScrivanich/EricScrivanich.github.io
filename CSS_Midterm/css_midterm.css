@@ -53,9 +53,7 @@ h1 {
     position: relative;
     top: 80px;
 }
-.offset:hover{
-    top: 75px;
-}
+
 
 
 h4{
@@ -101,16 +99,25 @@ h2{
     padding: 30px;
     
 }
-.events div:hover{
-    position: relative;
-    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.575));
-    bottom: 5px;
-}
+
 ul {
     list-style: square;
 }
 ul ul {
     list-style: circle;
+}
+@media screen and (min-width: 600px){ 
+
+    .events div:hover{
+        position: relative;
+        filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.575));
+        bottom: 5px;
+    }
+    .offset:hover{
+        top: 75px;
+    }
+
+
 }
 
 @media screen and (max-width: 400px){ 
@@ -118,10 +125,19 @@ ul ul {
         display: flex;
         flex-direction: column;
     }
+    .intro p {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 35px;
+    }
+    h4 {
+        font-size: 14px;
+    }
     .events div {
         flex: 90vw;
         max-width: fit-content;
-        margin: 3vw;
+        margin: 2vw;
     }
     .offset {
         position: relative;
