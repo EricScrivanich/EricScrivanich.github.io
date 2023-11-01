@@ -1,0 +1,42 @@
+.pig {
+    position: absolute;
+}
+h1 {
+    color: hotpink;
+    font-size: 50px;
+}
+
+.pig img {
+    width: 10vw;
+    height: auto;
+}
+
+
+#pig1 {
+    left: 10%;
+    top: 20%;
+}
+
+#pig2 {
+    left: 70%;
+    top: 80%;
+}
+
+#pig3 {
+    left: 30%;
+    top: 70%;
+}
+
+#pig4 {
+    left: 80%;
+    top: 10%;
+}
+
+
+h1 {
+    position: absolute;
+    top: 45vh;
+    left: 40vw;
+    
+    text-align: center;
+}

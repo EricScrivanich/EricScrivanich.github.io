@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/../css/ica9.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="myParagraph">Collect the Piggies</h1>
+    <div class="pig" id="pig1">
+        <img src="/../img/Pig.png" alt="pig">
+    </div>
+    <div class="pig" id="pig2">
+        <img src="/../img/Pig.png" alt="pig">
+    </div>
+    <div class="pig" id="pig3">
+        <img src="/../img/Pig.png" alt="pig">
+    </div>
+    <div class="pig" id="pig4">
+        <img src="/../img/Pig.png" alt="pig">
+    </div>
+    <script>
+        
+        let count = 0;
+
+        function changeText() {
+            const myParagraph = document.getElementById("myParagraph");
+            myParagraph.textContent = "Piggies Collected!";
+        }
+
+        function pigCount(event) {
+            count += 1;
+            event.currentTarget.style.display = 'none'; 
+            
+            if (count === 4) {
+                changeText();
+            }
+        }
+
+       
+        const pigs = document.querySelectorAll('.pig');
+        pigs.forEach(function(pig) {
+            pig.addEventListener('click', pigCount);
+        });
+    </script>
+</body>
+</html>
