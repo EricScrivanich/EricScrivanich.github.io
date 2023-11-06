@@ -1,6 +1,7 @@
 body {
     font-family: helvetica, sans-serif;
     width: 350px;
+    background-color: beige;
   }
 
   label {
@@ -14,6 +15,11 @@ body {
   input[type="text"] {
     padding: 5px;
     width: 150px;
+    
+  }
+
+  .randomize {
+    background-color: rgb(178, 244, 178);
   }
 
   p {
