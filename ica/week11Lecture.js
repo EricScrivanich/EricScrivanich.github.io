@@ -12,12 +12,34 @@ btn.addEventListener('click',draw);
 
 
 function draw() {
+    console.log(Math.random(.7).toFixed(1))
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = `rgba(${random(255)},${random(255)},${random(255)},1)`;
 
-    for (let i=0; i < 100; i++){
+        ctx.fillRect(0,0,canvas.width,canvas.height)
+
+    for (let i=0; i < 200; i++){
         ctx.beginPath();
-        ctx.fillStyle = "rgba(255,0,0,0.5)";
+        let choice = random(2);
+        ctx.fillStyle = `rgba(${random(255)},${random(255)},${random(255)},${Math.random().toFixed(1)})`;
+        
+        if (choice === 0)
+        {
+            Circle();
+        }
+        else {
+            Square();
+        }
+    }
+    
+        
+
+    }
+
+    function Circle()
+    {
+        
         ctx.arc (
             random(canvas.width),
             random(canvas.height),
@@ -30,7 +52,21 @@ function draw() {
 
     }
 
-}
+
+    function Square()
+    {
+
+       
+        ctx.fillRect(
+            random(canvas.width),
+            random(canvas.height),
+            random(80),random(80));
+            ctx.fill()
+  
+        
+    }
+
+
 
 function random(number) {
     return Math.floor(Math.random() * number);
