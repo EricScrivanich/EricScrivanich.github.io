@@ -12,14 +12,17 @@ const images = ['pic1.jpg', `pic2.jpg`, `pic3.jpg`, `pic4.jpg`, `pic5.jpg`];
 
 for (let i = 0; i < images.length; i++)
 {
+    const newDiv = document.createElement('div');
     const newImage = document.createElement('img');
     newImage.setAttribute('src',images[i]);
-    thumbBar.appendChild(newImage);
+    thumbBar.appendChild(newDiv);
+    newDiv.appendChild(newImage);
     newImage.addEventListener(`click`,() => {
         displayedImage.src = newImage.src;
         overlay.style.visibility = 'hidden';
         overlayVisable = false;
     });
+   
 
 }
 
