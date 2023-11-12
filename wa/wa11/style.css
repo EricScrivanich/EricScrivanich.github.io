@@ -1,64 +1,103 @@
-h1 {
-  font-family: helvetica, arial, sans-serif;
-  text-align: center;
-}
 
 body {
-  
- 
+  background: linear-gradient(to right, red, blue);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.full-img {
+
+h1 {
+  margin: 0;
+  margin-top: 10px;
+  
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 3vw;
+}
+.top
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap: 5px;
+}
+button {
+  margin-top: 10px;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.5vw;
+  width: 9vw;
+  height: 3vw;
+  background: rgba(150, 150, 150, 0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 3px solid black;
+  
+  cursor: pointer;
+  
+  
+}
+
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap: 20px; 
+  margin: 20px 0; 
+}
+
+
+.full-img, .redOverlay, .blueOverlay {
   position: relative;
-  display: block;
-  width: 640px;
-  height: 480px;
-  
-}
-.full-img img {
- 
-  width: 640px;
-  height: 480px;
-  
+  width: 45vw;
+  height: calc(45vw * 3 / 4); 
 }
 
-.overlay {
+.full-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.redOverlay {
+  background-color: rgba(255, 0, 0, .5);
+  visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
-  width: 640px;
-  height: 480px;
-  background-color: rgba(255,0,0,.5);
-  visibility: hidden;
 }
 
-button {
-  border: 0;
-  background: rgba(150,150,150,0.6);
-  text-shadow: 1px 1px 1px white;
-  border: 1px solid #999;
+.blueOverlay {
+  background-color: rgba(0, 0, 255, .5);
+  visibility: hidden;
   position: absolute;
-  cursor: pointer;
-  top: 2px;
-  left: 2px;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
+.thumb-bar {
+  display: flex;
+  width: 50vw; 
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thumb-bar div {
+  flex: 1;
+}
+
+.thumb-bar div:hover {
+  flex: 1.2; 
 }
 
 .thumb-bar img {
-  
   width: 100%;
- 
   cursor: pointer;
-} 
-.thumb-bar{
-  width: 60vw;
-  display: flex;
-  justify-content: center; /* This will center the flex items (children) inside the flex container */
-  margin-left: auto; /* These two margin properties will center the flex container itself */
-  margin-right: auto;
-  
-  
-}
-.thumb-bar div:hover {
-  
-  width: 110%;
 }
