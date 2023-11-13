@@ -41,7 +41,7 @@ function StartOverlay()
     }
     else 
     {
-        colorInterval = setInterval(Overlay,1000);
+        colorInterval = setInterval(Overlay,800);
         overlayVisable = true;
         btn.textContent = 'Stop';
     }

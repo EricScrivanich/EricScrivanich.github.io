@@ -62,7 +62,7 @@ section {
 }
 
 .redOverlay {
-  background-color: rgba(255, 0, 0, .5);
+  background-color: rgba(255, 0, 0, .4);
   visibility: hidden;
   position: absolute;
   top: 0;
@@ -70,15 +70,12 @@ section {
 }
 
 .blueOverlay {
-  background-color: rgba(0, 0, 255, .5);
+  background-color: rgba(0, 0, 255, .4);
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
 }
-
-
-
 
 
 .thumb-bar {
