@@ -35,7 +35,7 @@ btn.addEventListener(`click`,StartOverlay);
 
 function StartOverlay()
 {
-    if (overlayVisable)
+    if (overlayVisable) 
     {
         ClearOverlay();
     }
