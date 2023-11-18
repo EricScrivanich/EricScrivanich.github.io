@@ -1,6 +1,7 @@
-const btnQ = document.querySelector('#js-new-quote');
-const btnA = document.querySelector('#js-tweet');
-const answerTxt = document.querySelector('#js-answer-text');
+const btn = document.querySelector('button');
+
+
+
 
 let answer;
 
@@ -12,11 +13,11 @@ const endpoint = 'https://fakerapi.it/api/v1/credit_cards?_quantity=2';
 
 
 
-btnQ.addEventListener(`click`,getQuote);
-btnA.addEventListener(`click`,displayAnswer);
+btn.addEventListener(`click`,changeData);
 
 
-async function getQuote()
+
+async function changeData()
 {
     try
     {
@@ -28,9 +29,11 @@ async function getQuote()
 
         const json = await response.json();
    
-        console.log(json);
-        console.log(json['data'][0]['owner']);
-        displayQuote(json['data'][0]['owner']);
+       
+       
+        displayData((json['data'][0]['owner']),(json['data'][0]['expiration']),(json['data'][0]['number']));
+
+       
       
 
 
@@ -46,18 +49,26 @@ async function getQuote()
     
 }
 
-function displayQuote(q)
+function displayData(o,d,n)
 {
-    const questionTxt = document.querySelector('#js-quote-text');
+    const owner = document.querySelector('.owner');
+    const date = document.querySelector('.date');
+    const number = document.querySelector('.number');
 
-    questionTxt.textContent = q;
-    answerTxt.textContent = null;
+    owner.textContent = o;
+    date.textContent = d;
+
+    let formattedNumber = '';
+
+    for (let i = 0; i < n.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+            formattedNumber += ' ';
+        }
+        formattedNumber += n[i];
+    }
+
+    number.textContent = formattedNumber;
 
 }
 
-function displayAnswer()
-{
-    
-    answerTxt.textContent = answer;
-    
-}
+
