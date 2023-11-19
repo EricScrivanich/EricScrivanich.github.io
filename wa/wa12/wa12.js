@@ -70,6 +70,19 @@ function displayData(o,d,n)
 
     let formattedNumber = '';
 
+    if (n.length < 16)
+    {
+        let x = 16 - n.length
+        
+        for(let i = 0; i < x; i++)
+        {
+            let y = Math.floor(Math.random() * 10);
+            n += `${y}`;
+            
+        }
+        
+    }
+
     for (let i = 0; i < n.length; i++) {
         if (i > 0 && i % 4 === 0) {
             formattedNumber += ' ';
