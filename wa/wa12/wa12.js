@@ -3,7 +3,8 @@ let newData = true;
 let newOwner;
 let newDate;
 let newNumber;
-
+let beat = new Audio('ching.mp3');
+let playSound = false;
 
 
 
@@ -41,6 +42,7 @@ async function changeData()
         newDate = (json['data'][1]['expiration']);
         newNumber = (json['data'][1]['number']);
         newData = false
+        playSound = true;
     }
 
     catch(err)
@@ -54,6 +56,7 @@ async function changeData()
         // displayData((json['data'][1]['owner']),(json['data'][1]['expiration']),(json['data'][1]['number']));
         displayData(newOwner,newDate,newNumber);
         newData = true;
+        
 
     }
     
@@ -61,6 +64,13 @@ async function changeData()
 
 function displayData(o,d,n)
 {
+    if (playSound)
+    {
+        beat.load();
+        beat.play();
+    }
+   
+  
     const owner = document.querySelector('.owner');
     const date = document.querySelector('.date');
     const number = document.querySelector('.number');
