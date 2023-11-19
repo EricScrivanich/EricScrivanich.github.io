@@ -1,4 +1,5 @@
 const btn = document.querySelector('button');
+const h3 = document.querySelector('h3');
 let newData = true;
 let newOwner;
 let newDate;
@@ -8,14 +9,16 @@ let playSound = false;
 
 
 
+
 let answer;
 
 
 
 const endpoint = 'https://fakerapi.it/api/v1/credit_cards?_quantity=2';
+const endpointYE = "https://api.kanye.rest/"
 changeData()
 
-// https://api.kanye.rest/
+
 
 
 
@@ -48,7 +51,7 @@ async function changeData()
     catch(err)
     {
         console.log(err);
-        arguments;ErrorEvent('Failed to get quote');
+        arguments;ErrorEvent('Failed to get data');
     }
     }
     else 
@@ -56,12 +59,32 @@ async function changeData()
         // displayData((json['data'][1]['owner']),(json['data'][1]['expiration']),(json['data'][1]['number']));
         displayData(newOwner,newDate,newNumber);
         newData = true;
-        
-
     }
-    
+    try
+    {
+        const responseK = await fetch(endpointYE);
+        if (!responseK.ok)
+        {
+            throw Error(responseK.statusText);
+        }
+        const jsonK = await responseK.json();
+        console.log(jsonK);
+        displayQuote(jsonK['quote'])
+      
+    }
+
+    catch(err)
+    {
+        console.log(err);
+        arguments;ErrorEvent('Failed to get kanye quote');
+    }
 }
 
+function displayQuote(a)
+{
+    h3.textContent = `"${a}"`;
+
+}
 function displayData(o,d,n)
 {
     if (playSound)
@@ -103,5 +126,7 @@ function displayData(o,d,n)
     number.textContent = formattedNumber;
 
 }
+
+
 
 

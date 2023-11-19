@@ -25,7 +25,7 @@ for (let i = 0; i < images.length; i++)
         displayedImage.src = newImage.src;
         
         ClearOverlay();
-    });
+    }); 
    
 
 }
