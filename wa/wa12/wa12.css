@@ -29,16 +29,26 @@ button {
     height: 70px;
     width: 200px;
     background-color: rgb(51, 169, 57);
-    font-size: 30px;
+    font-size: 55px;
     color: white;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
+    
 
+}
+.press {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 80px;
+    width: 200px;
+    background-color: rgb(29, 29, 29);
 }
 button:hover {
     background-color: rgb(117, 197, 121);
-    top: 75px;
-    left: 19px;
+    
 }
+
 
 
 
@@ -46,8 +56,8 @@ button:hover {
     height: 428px;
     width: 685px;
     position: absolute;
-    top: 200px;
-    left: 100px;
+    top: 250px;
+    left: 150px;
     background-image: url("img/card.png");
     background-repeat: no-repeat;
     border: 7px white solid;
