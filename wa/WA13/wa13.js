@@ -140,17 +140,17 @@ const companyUpdate =
 
 
         let arr = ['Anna', 'Sam'];
-for (let i = 0; i < newEmployee.employees.length; i++) {
+for (let i = 0; i < companyUpdate.employees.length; i++) {
   for(let j = 0; arr.length; j++) {
-    if(newEmployee.employees[i]['name'] == arr[j]) {
-      newEmployee.employees[i]['wfh'] == true;
+    if(companyUpdate.employees[i]['name'] == arr[j]) {
+      companyUpdate.employees[i]['wfh'] == true;
     } else {
-      newEmployee.employees[i]['wfh'] == false;
+      companyUpdate.employees[i]['wfh'] == false;
     }
   }
 }
 console.log("Question 6");
-console.log(newEmployee);
+console.log(companyUpdate);
 
 
 
