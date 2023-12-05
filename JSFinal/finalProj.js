@@ -1,67 +1,154 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const board = document.getElementById("gameBoard");
-    const rows = 20;
-    const columns = 10;
-    let currentPosition = 4 + columns; // Adjusted starting position
 
-    // Create the game grid
-    for (let i = 0; i < rows * columns; i++) {
-        let cell = document.createElement("div");
-        board.appendChild(cell);
-    }
+        const canvas = document.getElementById('gameCanvas');
+        const numberDisplay = document.getElementsByClassName("values");
+        const ctx = canvas.getContext('2d');
 
-    // Add the block
-    let block = document.createElement("div");
-    block.classList.add("block");
-    board.appendChild(block);
+        canvas.width = 800;
+        canvas.height = 600;
 
-    // Move the block down
-    function moveDown() {
-        if (currentPosition + columns < rows * columns) {
-            currentPosition += columns;
-            updateBlockPosition();
-        } else {
-            // Block has landed
-            block.style.backgroundColor = 'green'; // Indicate landing
-            clearInterval(falling); // Stop the block from falling
+        let ballRadius = 10;
+        let numberSize = 50; // Size of squares
+        let x = canvas.width / 2;
+        let y = canvas.height - ballRadius; // Start the ball at the bottom of the canvas
+        let dx = 0;
+        let dy = 0;
+        let speed = 5;
+        let aiming = true;
+        let mouseX = 0;
+        let mouseY = 0;
+        let squares = []; // Array to hold squares
+        let hitValues = [];
+
+
+        class Number {
+            constructor(x, y, size, value) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.value = value;
+            }
+
+            square() {
+                ctx.beginPath();
+                ctx.rect(this.x, this.y, this.size, this.size);
+                ctx.fillStyle = "red";
+                ctx.fill();
+                ctx.closePath();
+            }
+            drawNumber() {
+                ctx.font = "16px Arial"; // Adjust font size as needed
+                ctx.fillStyle = "black"; // Font color
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(this.value, this.x + this.size / 2, this.y + this.size / 2);
+            }
+
+            
         }
-    }
-
-    // Move the block left
-    function moveLeft() {
-        if (currentPosition % columns !== 0) {
-            currentPosition -= 1;
-            updateBlockPosition();
+        function checkCollision() {
+            squares.forEach((square, index) => {
+                if (x + ballRadius > square.x && x - ballRadius < square.x + square.size &&
+                    y + ballRadius > square.y && y - ballRadius < square.y + square.size) {
+                    // Collision detected
+                    console.log("Collision with square " + (index + 1) + ", value: " + square.value);
+        
+                    // Handle the collision (e.g., remove the square)
+                    squares.splice(index, 1);
+                    hitValues.push(square.value);
+        
+                    // Additional actions based on the value can be added here
+                }
+            });
         }
-    }
-
-    // Move the block right
-    function moveRight() {
-        if ((currentPosition + 1) % columns !== 0) {
-            currentPosition += 1;
-            updateBlockPosition();
+        function drawHitValues() {
+            
+            if (numberDisplay.length > 0) {
+                numberDisplay[0].textContent = "Hit Values: " + hitValues.join(", ");
+            }
+            
         }
-    }
 
-    // Update block position
-    function updateBlockPosition() {
-        block.style.top = `${Math.floor(currentPosition / columns) * 20}px`;
-        block.style.left = `${(currentPosition % columns) * 20}px`;
-    }
-
-    // Handle keyboard input
-    document.addEventListener('keydown', (e) => {
-        switch(e.keyCode) {
-            case 37: // Left arrow key
-                moveLeft();
-                break;
-            case 39: // Right arrow key
-                moveRight();
-                break;
+        function initializeSquares() {
+            for (let i = 0; i < 6; i++) {
+                let number = Math.floor(Math.random() * 10);
+                let x = Math.floor(Math.random() * (canvas.width - numberSize));
+                let y = Math.floor(Math.random() * (canvas.height / 3));
+                squares.push(new Number(x, y, numberSize, number));
+            }
         }
-    });
 
-    // Start moving the block down
-    let falling = setInterval(moveDown, 1000);
-    updateBlockPosition();
-});
+        function drawSquares() {
+            squares.forEach(square => {
+                square.square();
+                square.drawNumber();
+            });
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawDirectionLine() {
+            if (aiming) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(mouseX, mouseY);
+                ctx.strokeStyle = '#FF0000';
+                ctx.stroke();
+            }
+        }
+
+        function updateBallPosition() {
+            if (!aiming) {
+                x += dx;
+                y += dy;
+
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+            }
+        }
+
+        canvas.addEventListener('mousemove', function(event) {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = event.clientX - rect.left;
+            mouseY = event.clientY - rect.top;
+        });
+
+        canvas.addEventListener('click', function() {
+            if (aiming) {
+                const angle = Math.atan2(mouseY - y, mouseX - x);
+                dx = speed * Math.cos(angle);
+                dy = speed * Math.sin(angle);
+                aiming = false;
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                window.location.reload(); // Reload the game when space bar is pressed
+            }
+        });
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawDirectionLine();
+            updateBallPosition();
+            drawSquares();
+            checkCollision();
+            drawHitValues();
+            requestAnimationFrame(draw);
+        }
+
+        // Initialize and start the game
+        initializeSquares();
+        draw();
+ 

@@ -54,7 +54,7 @@ function changeColor() {
 function result(){
   let emotion = dropdownList.value;
   
-  console.log(emotion);
+  console.log(emotion); 
 
   if (emotion === "Scared")
   {
