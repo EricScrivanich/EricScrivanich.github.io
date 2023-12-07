@@ -1,24 +1,53 @@
+let phoneNumbers = [];
+const canvas = document.getElementById('gameCanvas');
+const numberDisplay = document.getElementsByClassName("values");
+const ctx = canvas.getContext('2d');
+        
+canvas.width = 800;
+canvas.height = 600;
 
-        const canvas = document.getElementById('gameCanvas');
-        const numberDisplay = document.getElementsByClassName("values");
-        const ctx = canvas.getContext('2d');
+let ballRadius = 10;
+let numberSize = 50; // Size of squares
+let x = canvas.width / 2;
+let y = canvas.height - ballRadius; // Start the ball at the bottom of the canvas
+let dx = 0;
+let dy = 0;
+let speed = 5;
+let aiming = true;
+let mouseX = 0;
+let mouseY = 0;
+let squares = []; // Array to hold squares
+let hitValues = [];
+let amountOfTargets = 3;
+let targetNumber = 0;
+let amountOfTargetsHit = 0;
 
-        canvas.width = 800;
-        canvas.height = 600;
 
-        let ballRadius = 10;
-        let numberSize = 50; // Size of squares
-        let x = canvas.width / 2;
-        let y = canvas.height - ballRadius; // Start the ball at the bottom of the canvas
-        let dx = 0;
-        let dy = 0;
-        let speed = 5;
-        let aiming = true;
-        let mouseX = 0;
-        let mouseY = 0;
-        let squares = []; // Array to hold squares
-        let hitValues = [];
+document.getElementById('phoneForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
+    let PhoneNumber = document.getElementById('phoneNumber').value;
+
+    // Remove non-numeric characters
+    PhoneNumber = PhoneNumber.replace(/\D/g, '');
+
+    // Add the processed phone number to the list
+    phoneNumbers.push(PhoneNumber);
+
+    console.log("Processed Phone Number: " + PhoneNumber); 
+    console.log("All Phone Numbers: " + phoneNumbers.join(", ")); // Log all stored phone numbers
+
+    // Hide the phone number input form
+    document.getElementById('phoneNumberInput').style.display = 'none';
+
+    // Show the additional content and start the game
+    document.querySelector('.afterSubmission').style.display = 'block';
+    initializeSquares();
+    draw();
+
+    // Add your animation logic here before the game starts
+});
+        
 
         class Number {
             constructor(x, y, size, value) {
@@ -55,10 +84,22 @@
                     // Handle the collision (e.g., remove the square)
                     squares.splice(index, 1);
                     hitValues.push(square.value);
+                    checkAmountHit();
+                    
         
                     // Additional actions based on the value can be added here
                 }
             });
+        }
+        function checkAmountHit()
+        {
+            amountOfTargetsHit ++;
+
+            if (amountOfTargetsHit >= amountOfTargets)
+            {
+                console.log("nextLEvel");
+
+            }
         }
         function drawHitValues() {
             
@@ -69,8 +110,10 @@
         }
 
         function initializeSquares() {
-            for (let i = 0; i < 6; i++) {
-                let number = Math.floor(Math.random() * 10);
+            for (let i = 0; i < amountOfTargets; i++) {
+                // let number = Math.floor(Math.random() * 10);
+                number = phoneNumbers[targetNumber];
+                targetNumber ++;
                 let x = Math.floor(Math.random() * (canvas.width - numberSize));
                 let y = Math.floor(Math.random() * (canvas.height / 3));
                 squares.push(new Number(x, y, numberSize, number));
@@ -149,6 +192,6 @@
         }
 
         // Initialize and start the game
-        initializeSquares();
-        draw();
+        // initializeSquares();
+        // draw();
  
