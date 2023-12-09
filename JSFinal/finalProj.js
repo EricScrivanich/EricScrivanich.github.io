@@ -1,51 +1,72 @@
 let phoneNumbers = [];
 const canvas = document.getElementById('gameCanvas');
-const numberDisplay = document.getElementsByClassName("values");
+const body = document.querySelector('body');
+const numberDisplay = document.getElementById("values");
 const ctx = canvas.getContext('2d');
         
 canvas.width = 800;
 canvas.height = 600;
 
+const digits = [0,1,2,3,4,5,6,7,8,9];
+
 let ballRadius = 10;
-let numberSize = 50; // Size of squares
+let numberSize = 50; 
 let x = canvas.width / 2;
-let y = canvas.height - ballRadius; // Start the ball at the bottom of the canvas
+let y = canvas.height - ballRadius; 
 let dx = 0;
 let dy = 0;
 let speed = 5;
 let aiming = true;
 let mouseX = 0;
 let mouseY = 0;
-let squares = []; // Array to hold squares
+let squares = []; 
 let hitValues = [];
-let amountOfTargets = 3;
-let targetNumber = 0;
+let amountOfTargets = 6;
+let squareNumberValue = 0;
 let amountOfTargetsHit = 0;
+let correctIndexValue = 0;
 
 
 document.getElementById('phoneForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    phoneNumbers = [];
     let PhoneNumber = document.getElementById('phoneNumber').value;
 
-    // Remove non-numeric characters
-    PhoneNumber = PhoneNumber.replace(/\D/g, '');
+    let splitUpNumbers = PhoneNumber.split("");
 
-    // Add the processed phone number to the list
-    phoneNumbers.push(PhoneNumber);
 
-    console.log("Processed Phone Number: " + PhoneNumber); 
-    console.log("All Phone Numbers: " + phoneNumbers.join(", ")); // Log all stored phone numbers
+    for(i = 0; i < splitUpNumbers.length; i++)
+    {
+        let x = splitUpNumbers[i];
+       
+        for(d = 0; d < digits.length; d++)
+        {
+            if(digits[d] == x)
+            {
+                phoneNumbers.push(x);
+                break;
+            }
+        }
+    }
 
-    // Hide the phone number input form
-    document.getElementById('phoneNumberInput').style.display = 'none';
+    if (phoneNumbers.length != 10)
+    {
+        console.log(phoneNumbers.length)
+        console.log("tooshort");
+        let PhoneNumber = document.getElementById('phoneNumber').value;
+        return;
+    }
 
-    // Show the additional content and start the game
+    document.getElementById('beforeSubmission').style.display = 'none';
+
+    
     document.querySelector('.afterSubmission').style.display = 'block';
+    body.style.backgroundColor = 'black';
     initializeSquares();
     draw();
 
-    // Add your animation logic here before the game starts
+    
 });
         
 
@@ -84,36 +105,52 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
                     // Handle the collision (e.g., remove the square)
                     squares.splice(index, 1);
                     hitValues.push(square.value);
-                    checkAmountHit();
+                    checkAccuracy(square.value);
                     
         
                     // Additional actions based on the value can be added here
                 }
             });
         }
-        function checkAmountHit()
+        function checkAccuracy(value)
         {
-            amountOfTargetsHit ++;
-
-            if (amountOfTargetsHit >= amountOfTargets)
+            if (phoneNumbers[correctIndexValue] == value)
             {
-                console.log("nextLEvel");
-
+                console.log("yaaayyy");
+                
+                correctIndexValue ++;
+                drawHitValues();
+                amountOfTargetsHit ++;
+    
+                if (amountOfTargetsHit >= amountOfTargets)
+                {
+                    console.log("nextLevel");
+    
+                }
             }
+            else
+            {
+                numberDisplay.style.color = 'red';
+                restartGame();
+                console.log("wrong");
+            }
+          
         }
         function drawHitValues() {
             
-            if (numberDisplay.length > 0) {
-                numberDisplay[0].textContent = "Hit Values: " + hitValues.join(", ");
-            }
+            // if (numberDisplay.length > 0) {
+            //     numberDisplay[0].textContent = "Hit Values: " + hitValues.join(", ");
+            // }
+
+            numberDisplay.textContent = hitValues;
             
         }
 
         function initializeSquares() {
             for (let i = 0; i < amountOfTargets; i++) {
                 // let number = Math.floor(Math.random() * 10);
-                number = phoneNumbers[targetNumber];
-                targetNumber ++;
+                number = phoneNumbers[squareNumberValue];
+                squareNumberValue ++;
                 let x = Math.floor(Math.random() * (canvas.width - numberSize));
                 let y = Math.floor(Math.random() * (canvas.height / 3));
                 squares.push(new Number(x, y, numberSize, number));
@@ -130,7 +167,7 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
         function drawBall() {
             ctx.beginPath();
             ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = "green";
             ctx.fill();
             ctx.closePath();
         }
@@ -187,11 +224,33 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
             updateBallPosition();
             drawSquares();
             checkCollision();
-            drawHitValues();
+           
             requestAnimationFrame(draw);
         }
 
-        // Initialize and start the game
-        // initializeSquares();
-        // draw();
+        function restartGame() {
+            // Reset ball position and state
+            x = canvas.width / 2;
+            y = canvas.height - ballRadius;
+            dx = 0;
+            dy = 0;
+            aiming = true;
+            amountOfTargetsHit = 0;
+            correctIndexValue = 0;
+            hitValues = []; // Clear hit values
+            drawHitValues();
+        
+            // Clear existing squares and respawn them
+            squares = [];
+            squareNumberValue = 0; // Reset the square number value index
+            initializeSquares();
+        
+            // Reset display color
+            numberDisplay.style.color = 'initial'; // Reset the color of numberDisplay
+        
+            // Optionally reset other game states or variables as needed
+        }
+        
+
+       
  
