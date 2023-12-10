@@ -21,10 +21,15 @@ let mouseX = 0;
 let mouseY = 0;
 let squares = []; 
 let hitValues = [];
-let amountOfTargets = 6;
+let amountOfTargets = 2;
 let squareNumberValue = 0;
 let amountOfTargetsHit = 0;
 let correctIndexValue = 0;
+
+//Arrays For Level Difficulty
+let lvl = 0;
+let lvlAmountOfTargets = [1,1,2,2,3,1];
+let lvlAmountOfSpikes = [0,1,1,];
 
 
 document.getElementById('phoneForm').addEventListener('submit', function(event) {
@@ -125,6 +130,7 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
                 if (amountOfTargetsHit >= amountOfTargets)
                 {
                     console.log("nextLevel");
+                    nextLevel();
     
                 }
             }
@@ -236,6 +242,7 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
             dy = 0;
             aiming = true;
             amountOfTargetsHit = 0;
+            
             correctIndexValue = 0;
             hitValues = []; // Clear hit values
             drawHitValues();
@@ -249,6 +256,19 @@ document.getElementById('phoneForm').addEventListener('submit', function(event) 
             numberDisplay.style.color = 'initial'; // Reset the color of numberDisplay
         
             // Optionally reset other game states or variables as needed
+        }
+
+        function nextLevel()
+        {
+            x = canvas.width / 2;
+            y = canvas.height - ballRadius;
+            dx = 0;
+            dy = 0;
+            aiming = true;
+            amountOfTargets = 3;
+            amountOfTargetsHit = 0;
+            initializeSquares();
+
         }
         
 
