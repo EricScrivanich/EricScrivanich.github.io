@@ -11,8 +11,8 @@ h1 {
 }
 
 #gameCanvas {
-  border: 1px solid rgb(23, 108, 177);
-  background-color: #b7b7b7;
+  border: 3px solid rgb(26, 127, 210);
+  background-color: 'black';
 }
 
 .afterSubmission {
@@ -20,6 +20,7 @@ h1 {
 }
 .happy {
   position: absolute;
+  visibility: hidden;
   animation: rotate 3s infinite alternate ease-in-out;
 }
 

@@ -1,36 +1,40 @@
 let phoneNumbers = [];
 const canvas = document.getElementById("gameCanvas");
 const body = document.querySelector("body");
-const numberDisplay = document.getElementById("values");
 const ctx = canvas.getContext("2d");
+const numberDisplay = document.getElementById("values");
+const error = document.getElementById("submissionError");
+
 
 canvas.width = 800;
 canvas.height = 600;
 
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-let ballRadius = 10;
+let ballRadius = 14;
 let numberSize = 50;
-let x = canvas.width / 2;
-let y = canvas.height - ballRadius;
+
+let ballX = canvas.width / 2;
+let ballY = canvas.height - ballRadius;
 let dx = 0;
 let dy = 0;
 let speed = 5;
 let aiming = true;
 let mouseX = 0;
 let mouseY = 0;
-let squares = [];
-let spikes = [];
-let hitValues = [];
+
 let amountOfTargets = 2;
 let squareNumberValue = 0;
 let amountOfTargetsHit = 0;
 let correctIndexValue = 0;
 
+let squares = [];
+let spikes = [];
+let hitValues = [];
 
 let positionX = [];
 let positionY = [];
-let spawnThreshold = 35;
+let spawnThreshold = 40;
 
 let ready = true;
 
@@ -60,12 +64,16 @@ document
       }
     }
 
-    if (phoneNumbers.length != 10) {
-      console.log(phoneNumbers.length);
-      console.log("tooshort");
-      let PhoneNumber = document.getElementById("phoneNumber").value;
+    if (phoneNumbers.length < 10) {
+      error.textContent = `Your number is too short, please add (${10 - phoneNumbers.length}) more numbers`
       return;
     }
+     else if (phoneNumbers.length > 10) {
+       error.textContent = `Your number is too long, please remove (${
+         10 - phoneNumbers.length
+       }) numbers`;
+       return;
+     }
 
     document.getElementById("beforeSubmission").style.display = "none";
 
@@ -76,6 +84,31 @@ document
 
     draw();
   });
+
+
+  canvas.addEventListener("mousemove", function (event) {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
+  });
+
+  canvas.addEventListener("click", function () {
+    if (aiming) {
+      const angle = Math.atan2(mouseY - ballY, mouseX - ballX);
+      dx = speed * Math.cos(angle);
+      dy = speed * Math.sin(angle);
+      aiming = false;
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.code === "Space") {
+      restartGame(); // Reload the game when space bar is pressed
+    }
+  });
+
+
+
 
 class Number {
   constructor(x, y, size, value) {
@@ -117,45 +150,10 @@ class Spike {
   }
 }
 
-function checkCollision() {
-  // Check collision with numbered squares
-  squares.forEach((square, index) => {
-    if (
-      x + ballRadius > square.x &&
-      x - ballRadius < square.x + square.size &&
-      y + ballRadius > square.y &&
-      y - ballRadius < square.y + square.size
-    ) {
-      // Collision detected with a numbered square
-      console.log(
-        "Collision with numbered square " +
-          (index + 1) +
-          ", value: " +
-          square.value
-      );
-      squares.splice(index, 1); // Remove the square
-      hitValues.push(square.value); // Add the value to hit values
-      checkAccuracy(square.value); // Check if the value is accurate
-    }
-  });
 
-  // Check collision with spikes
-  spikes.forEach((spike, index) => {
-    if (
-      x + ballRadius > spike.x &&
-      x - ballRadius < spike.x + spike.size &&
-      y + ballRadius > spike.y &&
-      y - ballRadius < spike.y + spike.size
-    ) {
-      // Collision detected with a spike
-      console.log("Collision with a spike");
-      spikes.splice(index, 1); // Remove the spike
-      // Handle collision with a spike
-      // For example, call restartGame() or another function
-      restartGame(); // Assuming you want to restart the game when hitting a spike
-    }
-  });
-}
+
+
+
 function checkAccuracy(value) {
   if (phoneNumbers[correctIndexValue] == value) {
     console.log("yaaayyy");
@@ -228,7 +226,7 @@ function drawSpikes() {
 
 function drawBall() {
   ctx.beginPath();
-  ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
   ctx.fillStyle = "green";
   ctx.fill();
   ctx.closePath();
@@ -237,64 +235,73 @@ function drawBall() {
 function drawDirectionLine() {
   if (aiming) {
     ctx.beginPath();
-    ctx.moveTo(x, y);
+    ctx.moveTo(ballX, ballY);
     ctx.lineTo(mouseX, mouseY);
-    ctx.strokeStyle = "#FF0000";
+    ctx.strokeStyle = "white";
     ctx.stroke();
   }
 }
 
 function updateBallPosition() {
   if (!aiming) {
-    x += dx;
-    y += dy;
+    ballX += dx;
+    ballY += dy;
 
-    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+    if (ballX + dx > canvas.width - ballRadius || ballX + dx < ballRadius) {
       dx = -dx;
     }
-    if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+    if (ballY + dy > canvas.height - ballRadius || ballY + dy < ballRadius) {
       dy = -dy;
     }
   }
 }
 
-canvas.addEventListener("mousemove", function (event) {
-  const rect = canvas.getBoundingClientRect();
-  mouseX = event.clientX - rect.left;
-  mouseY = event.clientY - rect.top;
-});
 
-canvas.addEventListener("click", function () {
-  if (aiming) {
-    const angle = Math.atan2(mouseY - y, mouseX - x);
-    dx = speed * Math.cos(angle);
-    dy = speed * Math.sin(angle);
-    aiming = false;
-  }
-});
+function checkCollision() {
+  // Check collision with numbered squares
+  squares.forEach((square, index) => {
+    if (
+      ballX + ballRadius > square.x &&
+      ballX - ballRadius < square.x + square.size &&
+      ballY + ballRadius > square.y &&
+      ballY - ballRadius < square.y + square.size
+    ) {
+      // Collision detected with a numbered square
+      console.log(
+        "Collision with numbered square " +
+          (index + 1) +
+          ", value: " +
+          square.value
+      );
+      squares.splice(index, 1); // Remove the square
+      hitValues.push(square.value); // Add the value to hit values
+      checkAccuracy(square.value); // Check if the value is accurate
+    }
+  });
 
-document.addEventListener("keydown", function (event) {
-  if (event.code === "Space") {
-    restartGame(); // Reload the game when space bar is pressed
-  }
-});
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawBall();
-  drawDirectionLine();
-  updateBallPosition();
-  drawSquares();
-  drawSpikes();
-  checkCollision();
-
-  requestAnimationFrame(draw);
+  // Check collision with spikes
+  spikes.forEach((spike, index) => {
+    if (
+      ballX + ballRadius > spike.x &&
+      ballX - ballRadius < spike.x + spike.size &&
+      ballY + ballRadius > spike.y &&
+      ballY - ballRadius < spike.y + spike.size
+    ) {
+      // Collision detected with a spike
+      console.log("Collision with a spike");
+      spikes.splice(index, 1); // Remove the spike
+      // Handle collision with a spike
+      // For example, call restartGame() or another function
+      restartGame(); // Assuming you want to restart the game when hitting a spike
+    }
+  });
 }
+
 
 function restartGame() {
   // Reset ball position and state
-  x = canvas.width / 2;
-  y = canvas.height - ballRadius;
+  ballX = canvas.width / 2;
+  ballY = canvas.height - ballRadius;
   lvl = 0;
   dx = 0;
   dy = 0;
@@ -321,8 +328,8 @@ function restartGame() {
 }
 
 function nextLevel() {
-  x = canvas.width / 2;
-  y = canvas.height - ballRadius;
+  ballX = canvas.width / 2;
+  ballY = canvas.height - ballRadius;
   lvl++;
   dx = 0;
   dy = 0;
@@ -333,4 +340,17 @@ function nextLevel() {
   amountOfTargetsHit = 0;
   initializeSquares();
   initializeSpikes();
+}
+
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBall();
+  drawDirectionLine();
+  updateBallPosition();
+  drawSquares();
+  drawSpikes();
+  checkCollision();
+
+  requestAnimationFrame(draw);
 }
