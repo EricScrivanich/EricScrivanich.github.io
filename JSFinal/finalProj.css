@@ -1,69 +1,71 @@
 body {
-    display: flex;
-    background-color: lightblue;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    
+  display: flex;
+  background-color: lightblue;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+h1 {
+  color: white;
 }
 
 #gameCanvas {
-    border: 1px solid rgb(23, 108, 177);
-    background-color: #b7b7b7;
+  border: 1px solid rgb(23, 108, 177);
+  background-color: #b7b7b7;
 }
 
 .afterSubmission {
-    display: none;
+  display: none;
 }
 .happy {
-    position: absolute;
-    animation: rotate 3s infinite alternate ease-in-out;
+  position: absolute;
+  animation: rotate 3s infinite alternate ease-in-out;
 }
 
 #rainbow {
-    bottom: 200px; /* Adjust as needed */
-    left: 200px; /* Adjust as needed */
+  bottom: 200px; /* Adjust as needed */
+  left: 200px; /* Adjust as needed */
 }
 
 #sun {
-    top: 50px; /* Adjust as needed */
-    right: 100px; /* Adjust as needed */
+  top: 50px; /* Adjust as needed */
+  right: 100px; /* Adjust as needed */
 }
 
-#star1, #star2, #star3, #star4 {
-    width: 80px;
-    height: auto;
+#star1,
+#star2,
+#star3,
+#star4 {
+  width: 80px;
+  height: auto;
 }
 
 #star1 {
-    top: 120px; /* Second closest to the top */
-    left: 300px; /* Adjust as needed */
+  top: 120px; /* Second closest to the top */
+  left: 300px; /* Adjust as needed */
 }
 
 #star2 {
-    top: 250px; /* Second closest to the top */
-    left: 800px; /* Adjust as needed */
+  top: 250px; /* Second closest to the top */
+  left: 800px; /* Adjust as needed */
 }
 
 #star3 {
-    bottom: 220px; /* Third closest to the top */
-    right: 400px; /* Adjust as needed */
+  bottom: 220px; /* Third closest to the top */
+  right: 400px; /* Adjust as needed */
 }
 
 #star4 {
-    bottom: 90px; /* Farthest from the top */
-    left: 80px; /* Adjust as needed */
+  bottom: 90px; /* Farthest from the top */
+  left: 80px; /* Adjust as needed */
 }
-
 
 @keyframes rotate {
-    from {
-        transform: rotate(-10deg);
-    }
-    to {
-        transform: rotate(10deg);
-    }
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
 }
-
-
