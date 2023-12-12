@@ -5,10 +5,57 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  transition: background-color 1s ease; /* 1 second transition for background-color */
+  font-family: "Press Start 2P";
+  transition: background-color 1s ease; 
+  
+}
+
+#phoneNumberInput
+{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 h1 {
   color: white;
+}
+
+.gameArea {
+  display: flex;
+  align-items: center; /* Align vertically */
+  justify-content: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+.circle {
+    width: 200px; /* Circle size */
+    height: 200px; /* Circle size */
+    border: 10px solid rgb(22, 186, 22);
+    border-radius: 50%; /* Make it round */
+    margin-left: 80px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    font-size: 70px; /* Timer text size */
+    color: rgb(22, 186, 22) /* Timer text color */
+}
+
+#tut {
+  width: 400px;
+  height: 300px;
+  color: green;
+  background-color: aqua;
+  
+
+}
+
+li {
+  margin: 40px 10px;
 }
 
 #submissionError {
@@ -19,7 +66,7 @@ h1 {
   border: 3px solid rgb(26, 127, 210);
   background-color: "black";
   margin-top: 100px; /* Move down by 50px */
-  margin-left: 200px; /* Move right by 20px */
+  margin-left: 100px; /* Move right by 20px */
 }
 
 .gif {
@@ -38,12 +85,15 @@ h1 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  width: 450px;
   opacity: 0; /* Start as transparent if you are using a fade-in effect */
-  animation: moveDown 3s ease forwards; /* Apply the animation */
+  /* animation: moveDown 3s ease forwards; Apply the animation */
 }
 
 .afterSubmission {
   display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
 }
 .happy {
   position: absolute;
@@ -89,6 +139,13 @@ h1 {
   left: 80px; /* Adjust as needed */
 }
 
+.animate-moveDown {
+  animation: moveDown 3s ease forwards;
+}
+.animate-fadeIn {
+  animation: fadeIn 2s ease forwards;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(-10deg);
@@ -104,7 +161,16 @@ h1 {
     opacity: 0; /* Start from transparent if you want a fade-in effect */
   }
   to {
-    top: 3%; /* Move to the middle of the screen, adjust as needed */
+    top: -2%; /* Move to the middle of the screen, adjust as needed */
     opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

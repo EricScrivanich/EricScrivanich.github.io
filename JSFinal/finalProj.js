@@ -7,13 +7,13 @@ const error = document.getElementById("submissionError");
 const gif = document.querySelector(".gif");
 const hacked = document.querySelector(".hacked");
 
-canvas.width = 800;
+canvas.width = 730;
 canvas.height = 600;
 
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let ballRadius = 14;
-const squareSize = 50;
+const squareSize = 60;
 const spikeSize = 45;
 
 let ballX = canvas.width / 2;
@@ -26,6 +26,10 @@ let mouseX = 0;
 let mouseY = 0;
 
 const collisionMargin = 5;
+
+let count;
+const timer = document.getElementById("timer");
+let repeat;
 
 let amountOfTargets = 2;
 let squareNumberValue = 0;
@@ -45,8 +49,8 @@ let ready = true;
 
 //Arrays For Level Difficulty
 let lvl = 0;
-const lvlAmountOfTargets = [3, 1, 1, 1, 1];
-const lvlAmountOfSpikes = [0, 1, 2, 3, 6];
+const lvlAmountOfTargets = [1, 2, 1, 3, 3];
+const lvlAmountOfSpikes = [0, 1, 3, 0, 3];
 
 document
   .getElementById("phoneForm")
@@ -89,22 +93,66 @@ document
       gif.style.display = "none";
       body.style.backgroundColor = "black";
       hacked.style.display = "block";
+      let formattedNumber = formatPhoneNumber(phoneNumbers.join(""));
+      document.getElementById("values").textContent = formattedNumber;
+      initializeSquares();
+      initializeSpikes();
+      showGame();
+      countdown();
+      
 
-      setTimeout(() => {
-        // Code to execute goes here
+      draw();
 
-        let formattedNumber = formatPhoneNumber(phoneNumbers.join(""));
-        document.getElementById("values").textContent = formattedNumber;
-
-        document.querySelector(".afterSubmission").style.display = "block";
-
-        initializeSquares();
-        initializeSpikes();
-
-        draw();
-      }, 4000); // Wait 1 second before executing code
-    }, 5000); // Wait 1 second before executing code
+     
+    }, 0); 
   });
+
+
+
+  function countdown() {
+  clearInterval(repeat); // Clear any previous interval
+  count = 15; // Set your desired countdown time
+  timer.textContent = count;
+  setTimeout(() => {
+    repeat = setInterval(reduce, 1000); 
+    
+  }, 1500); 
+   // Initialize timer display
+  // Start
+  }
+
+  function reduce() {
+    if (count > 0) {
+      count--;
+      timer.textContent = count;
+    } else {
+      restartGame();
+      
+    }
+  }
+
+  function resetFadeInAnimation() {
+    const gameArea = document.querySelector(".afterSubmission");
+    gameArea.classList.remove("animate-fadeIn");
+    const hacked = document.querySelector(".hacked");
+    hacked.classList.remove("animate-moveDown");
+    void hacked.offsetWidth; // Trigger reflow
+    hacked.classList.add("animate-moveDown");
+     gameArea.classList.add("animate-fadeIn");
+  }
+  function showGame() 
+  {
+  setTimeout(() => {
+    let gameArea = document.querySelector('.afterSubmission');
+    let hacked = document.querySelector(".hacked");
+    gameArea.style.display = 'block';
+    gameArea.classList.add('animate-fadeIn');
+    hacked.classList.add("animate-moveDown");
+
+    // ... rest of your showGame function ...
+  }, 500);
+}
+  
 
 canvas.addEventListener("mousemove", function (event) {
   const rect = canvas.getBoundingClientRect();
@@ -178,8 +226,9 @@ function checkAccuracy(value) {
       console.log("nextLevel");
       nextLevel();
     }
-  } else {
-    numberDisplay.style.color = "red";
+  } 
+  else {
+    // numberDisplay.style.color = "red";
     restartGame();
     console.log("wrong");
   }
@@ -251,12 +300,30 @@ function initializeSquares() {
 
 function initializeSpikes() {
   for (let i = 0; i < lvlAmountOfSpikes[lvl]; i++) {
-    let x = Math.floor(Math.random() * (canvas.width - spikeSize));
-    let y = Math.floor(Math.random() * (canvas.height / 2));
-    spikes.push(new Spike(x, y, spikeSize));
+    let X, Y;
+    let overlap;
+
+    do {
+      overlap = false;
+      X = Math.floor(Math.random() * (canvas.width - spikeSize));
+      Y = Math.floor(Math.random() * (canvas.height / 2));
+
+      for (let n = 0; n < positionX.length; n++) {
+        if (
+          Math.abs(positionX[n] - X) < spikeSpawnThreshold &&
+          Math.abs(positionY[n] - Y) < spikeSpawnThreshold
+        ) {
+          overlap = true;
+          break;
+        }
+      }
+    } while (overlap);
+
+    positionX.push(X);
+    positionY.push(Y);
+    spikes.push(new Spike(X, Y, spikeSize));
   }
 }
-
 function drawSquares() {
   squares.forEach((square) => {
     square.square();
@@ -365,9 +432,11 @@ function restartGame() {
   squareNumberValue = 0; // Reset the square number value index
   initializeSquares();
   initializeSpikes();
+  resetFadeInAnimation();
+  countdown();
 
   // Reset display color
-  numberDisplay.style.color = "initial"; // Reset the color of numberDisplay
+  // numberDisplay.style.color = "initial"; // Reset the color of numberDisplay
 
   // Optionally reset other game states or variables as needed
 }

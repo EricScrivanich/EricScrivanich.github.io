@@ -4,6 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phone Input</title>
     <link rel="stylesheet" href="finalProj.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="beforeSubmission">
@@ -14,7 +20,7 @@
       <img src="img/happyStar.png" alt="star" class="happy" id="star3" />
       <img src="img/happyStar.png" alt="star" class="happy" id="star4" />
 
-      <p id="submissionError"> </p>
+      <p id="submissionError"></p>
       <div id="phoneNumberInput">
         <form id="phoneForm">
           <label for="phoneNumber">Enter Phone Number:</label>
@@ -24,15 +30,29 @@
       </div>
     </div>
 
-    <img src="img/loadGif.gif" class = 'gif' alt="gif">
-    <img src="img/hacked.png" class = 'hacked' alt="hacked">
-
+    <img src="img/loadGif.gif" class="gif" alt="gif" />
+    <img src="img/hacked.png" class="hacked" alt="hacked" />
 
     <div class="afterSubmission">
       <h1 id="values"></h1>
       <br />
-      <canvas id="gameCanvas"></canvas>
-      <div id="gameBoard"></div>
+
+      <div class="gameArea">
+        <div class = 'left'>
+        <div id="tut">
+          <ul>
+            <li>collect your numbers back in order</li>
+            <li>avoid the obstacles</li>
+            <li>press space to restart</li>
+            <li class="luck">You have 15 seconds, good luck!</li>
+          </ul>
+        </div>
+        <div class="circle">
+    <span id="timer">15</span>
+</div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+      </div>
     </div>
     <script src="finalProj.js"></script>
   </body>

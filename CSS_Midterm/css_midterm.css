@@ -21,6 +21,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
    
 
     
@@ -145,6 +146,10 @@ ul ul {
     }
     h1{
         font-size: 60px;
+    }
+
+    ul {
+        font-family: gal;
     }
     /* p  {
         font-size: 10px;
