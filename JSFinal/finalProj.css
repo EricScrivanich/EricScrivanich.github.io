@@ -47,9 +47,9 @@ h1 {
 
 #tut {
   width: 400px;
-  height: 300px;
-  color: green;
-  background-color: aqua;
+  height: 400px;
+  color: rgb(22, 186, 22);
+  border: 8px solid rgb(22, 186, 22);
   
 
 }
@@ -63,7 +63,7 @@ li {
 }
 
 #gameCanvas {
-  border: 3px solid rgb(26, 127, 210);
+  border: 3px solid rgb(22, 186, 22);
   background-color: "black";
   margin-top: 100px; /* Move down by 50px */
   margin-left: 100px; /* Move right by 20px */
@@ -140,10 +140,10 @@ li {
 }
 
 .animate-moveDown {
-  animation: moveDown 3s ease forwards;
+  animation: moveDown 2.5s ease forwards;
 }
 .animate-fadeIn {
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 3s ease forwards;
 }
 
 @keyframes rotate {

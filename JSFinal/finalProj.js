@@ -104,19 +104,19 @@ document
       draw();
 
      
-    }, 0); 
+    }, 3500); 
   });
 
 
 
   function countdown() {
   clearInterval(repeat); // Clear any previous interval
-  count = 15; // Set your desired countdown time
+  count = 20; // Set your desired countdown time
   timer.textContent = count;
   setTimeout(() => {
     repeat = setInterval(reduce, 1000); 
     
-  }, 1500); 
+  }, 2500); 
    // Initialize timer display
   // Start
   }
@@ -347,10 +347,21 @@ function drawBall() {
 
 function drawDirectionLine() {
   if (aiming) {
+    const maxLineLength = 200; // Max length of the line
+    const dx = mouseX - ballX;
+    const dy = mouseY - ballY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const unitX = dx / distance;
+    const unitY = dy / distance;
+
+    const lineEndX = ballX + unitX * maxLineLength;
+    const lineEndY = ballY + unitY * maxLineLength;
+
     ctx.beginPath();
     ctx.moveTo(ballX, ballY);
-    ctx.lineTo(mouseX, mouseY);
+    ctx.lineTo(lineEndX, lineEndY);
     ctx.strokeStyle = "white";
+    ctx.lineWidth = 3; 
     ctx.stroke();
   }
 }
