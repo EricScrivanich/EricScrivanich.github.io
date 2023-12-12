@@ -5,14 +5,41 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background-color 1s ease; /* 1 second transition for background-color */
 }
 h1 {
   color: white;
 }
 
+#submissionError {
+  color: red;
+}
+
 #gameCanvas {
   border: 3px solid rgb(26, 127, 210);
-  background-color: 'black';
+  background-color: "black";
+  margin-top: 100px; /* Move down by 50px */
+  margin-left: 200px; /* Move right by 20px */
+}
+
+.gif {
+  width: 200px;
+  height: auto;
+  display: none;
+}
+
+#values {
+  color: grey;
+  font-size: 24px;
+}
+
+.hacked {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Start as transparent if you are using a fade-in effect */
+  animation: moveDown 3s ease forwards; /* Apply the animation */
 }
 
 .afterSubmission {
@@ -20,7 +47,7 @@ h1 {
 }
 .happy {
   position: absolute;
-  visibility: hidden;
+
   animation: rotate 3s infinite alternate ease-in-out;
 }
 
@@ -68,5 +95,16 @@ h1 {
   }
   to {
     transform: rotate(10deg);
+  }
+}
+
+@keyframes moveDown {
+  from {
+    top: -20%; /* Start from the top of the screen */
+    opacity: 0; /* Start from transparent if you want a fade-in effect */
+  }
+  to {
+    top: 3%; /* Move to the middle of the screen, adjust as needed */
+    opacity: 1; /* Fully visible */
   }
 }
