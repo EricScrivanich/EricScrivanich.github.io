@@ -145,7 +145,7 @@ li {
   animation: moveDown 2.5s ease forwards;
 }
 .animate-fadeIn {
-  animation: fadeIn 3s ease forwards;
+  animation: fadeIn 2.5s ease forwards;
 }
 
 @keyframes rotate {

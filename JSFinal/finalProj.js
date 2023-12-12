@@ -42,8 +42,8 @@ let hitValues = [];
 
 let positionX = [];
 let positionY = [];
-let spawnThreshold = 40;
-let spikeSpawnThreshold = 60;
+let spawnThreshold = 50;
+let spikeSpawnThreshold = 65;
 
 let ready = true;
 
@@ -116,7 +116,7 @@ document
   setTimeout(() => {
     repeat = setInterval(reduce, 1000); 
     
-  }, 2500); 
+  }, 2100); 
    // Initialize timer display
   // Start
   }
@@ -134,10 +134,11 @@ document
   function resetFadeInAnimation() {
     const gameArea = document.querySelector(".afterSubmission");
     gameArea.classList.remove("animate-fadeIn");
-    const hacked = document.querySelector(".hacked");
-    hacked.classList.remove("animate-moveDown");
+    // const hacked = document.querySelector(".hacked");
+    // hacked.classList.remove("animate-moveDown");
     void hacked.offsetWidth; // Trigger reflow
-    hacked.classList.add("animate-moveDown");
+    void gameArea.offsetWidth;
+    // hacked.classList.add("animate-moveDown");
      gameArea.classList.add("animate-fadeIn");
   }
   function showGame() 
@@ -306,7 +307,7 @@ function initializeSpikes() {
     do {
       overlap = false;
       X = Math.floor(Math.random() * (canvas.width - spikeSize));
-      Y = Math.floor(Math.random() * (canvas.height / 2));
+      Y = Math.floor(Math.random() * (canvas.height / 1.7));
 
       for (let n = 0; n < positionX.length; n++) {
         if (
