@@ -20,7 +20,7 @@ let ballX = canvas.width / 2;
 let ballY = canvas.height - ballRadius;
 let dx = 0;
 let dy = 0;
-let speed = 5;
+let speed = 6.5;
 let aiming = true;
 let mouseX = 0;
 let mouseY = 0;
@@ -30,6 +30,7 @@ const collisionMargin = 5;
 let count;
 const timer = document.getElementById("timer");
 let repeat;
+let timeout;
 
 let amountOfTargets = 2;
 let squareNumberValue = 0;
@@ -55,7 +56,7 @@ const lvlAmountOfSpikes = [0, 1, 3, 0, 3];
 document
   .getElementById("phoneForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
 
     phoneNumbers = [];
     let PhoneNumber = document.getElementById("phoneNumber").value;
@@ -110,17 +111,18 @@ document
 
 
   function countdown() {
-  clearInterval(repeat); // Clear any previous interval
-  count = 20; // Set your desired countdown time
+  clearInterval(repeat); 
+  clearTimeout(timeout);
+  count = 20; 
   timer.textContent = count;
-  setTimeout(() => {
-    repeat = setInterval(reduce, 1000); 
+  timeout = setTimeout(() => {
+    repeat = setInterval(reduce, 1200); 
     
   }, 2100); 
-   // Initialize timer display
-  // Start
+   
   }
 
+  
   function reduce() {
     if (count > 0) {
       count--;
@@ -134,11 +136,10 @@ document
   function resetFadeInAnimation() {
     const gameArea = document.querySelector(".afterSubmission");
     gameArea.classList.remove("animate-fadeIn");
-    // const hacked = document.querySelector(".hacked");
-    // hacked.classList.remove("animate-moveDown");
+ 
     void hacked.offsetWidth; // Trigger reflow
     void gameArea.offsetWidth;
-    // hacked.classList.add("animate-moveDown");
+   
      gameArea.classList.add("animate-fadeIn");
   }
   function showGame() 
@@ -150,7 +151,7 @@ document
     gameArea.classList.add('animate-fadeIn');
     hacked.classList.add("animate-moveDown");
 
-    // ... rest of your showGame function ...
+   
   }, 500);
 }
   
@@ -172,7 +173,7 @@ canvas.addEventListener("click", function () {
 
 document.addEventListener("keydown", function (event) {
   if (event.code === "Space") {
-    restartGame(); // Reload the game when space bar is pressed
+    restartGame(); 
   }
 });
 
@@ -192,8 +193,8 @@ class Number {
     ctx.closePath();
   }
   drawNumber() {
-    ctx.font = "16px Arial"; // Adjust font size as needed
-    ctx.fillStyle = "black"; // Font color
+    ctx.font = "16px Arial"; 
+    ctx.fillStyle = "black"; 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(this.value, this.x + this.size / 2, this.y + this.size / 2);
@@ -210,7 +211,7 @@ class Spike {
   drawSpike() {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.size, this.size);
-    ctx.fillStyle = "red"; // Red color for these squares
+    ctx.fillStyle = "red"; 
     ctx.fill();
     ctx.closePath();
   }
@@ -219,7 +220,7 @@ class Spike {
 function checkAccuracy(value) {
   if (phoneNumbers[correctIndexValue] == value) {
     correctIndexValue++;
-    drawHitValues();
+   
     updatePhoneNumberDisplay(correctIndexValue);
     amountOfTargetsHit++;
 
@@ -229,20 +230,15 @@ function checkAccuracy(value) {
     }
   } 
   else {
-    // numberDisplay.style.color = "red";
+    
     restartGame();
     console.log("wrong");
   }
 }
 
 function formatPhoneNumber(number) {
-  // Assuming a US phone number format: XXX-XXX-XXXX
+
   return number.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
-}
-function drawHitValues() {
-  // if (numberDisplay.length > 0) {
-  //     numberDisplay[0].textContent = "Hit Values: " + hitValues.join(", ");
-  // }
 }
 
 function updatePhoneNumberDisplay(correctDigits) {
@@ -253,7 +249,7 @@ function updatePhoneNumberDisplay(correctDigits) {
 
   for (let i = 0; i < displayText.length; i++) {
     if (/\d/.test(displayText[i])) {
-      // Check if the character is a digit
+     
       if (digitCount < correctDigits) {
         updatedText += `<span style="color: white;">${displayText[i]}</span>`;
         digitCount++;
@@ -261,7 +257,7 @@ function updatePhoneNumberDisplay(correctDigits) {
         updatedText += displayText[i];
       }
     } else {
-      updatedText += displayText[i]; // Non-digit characters
+      updatedText += displayText[i]; 
     }
   }
 
@@ -270,7 +266,7 @@ function updatePhoneNumberDisplay(correctDigits) {
 
 function initializeSquares() {
   for (let i = 0; i < lvlAmountOfTargets[lvl]; i++) {
-    // let number = Math.floor(Math.random() * 10);
+  
     number = phoneNumbers[squareNumberValue];
     squareNumberValue++;
     let X, Y;
@@ -348,7 +344,7 @@ function drawBall() {
 
 function drawDirectionLine() {
   if (aiming) {
-    const maxLineLength = 200; // Max length of the line
+    const maxLineLength = 200; 
     const dx = mouseX - ballX;
     const dy = mouseY - ballY;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -382,7 +378,7 @@ function updateBallPosition() {
 }
 
 function checkCollision() {
-  // Check collision with numbered squares
+
   squares.forEach((square, index) => {
     if (
       ballX + ballRadius > square.x &&
@@ -390,20 +386,20 @@ function checkCollision() {
       ballY + ballRadius > square.y &&
       ballY - ballRadius < square.y + square.size
     ) {
-      // Collision detected with a numbered square
+      
       console.log(
         "Collision with numbered square " +
           (index + 1) +
           ", value: " +
           square.value
       );
-      squares.splice(index, 1); // Remove the square
-      hitValues.push(square.value); // Add the value to hit values
-      checkAccuracy(square.value); // Check if the value is accurate
+      squares.splice(index, 1); 
+      hitValues.push(square.value); 
+      checkAccuracy(square.value); 
     }
   });
 
-  // Check collision with spikes
+
   spikes.forEach((spike, index) => {
     if (
       ballX + ballRadius > spike.x + collisionMargin &&
@@ -411,9 +407,9 @@ function checkCollision() {
       ballY + ballRadius > spike.y + collisionMargin &&
       ballY - ballRadius < spike.y + spike.size - collisionMargin
     ) {
-      // Collision detected with a spike
+    
 
-      restartGame(); // Restart the game when hitting a spike
+      restartGame(); 
     }
   });
 }
@@ -436,21 +432,19 @@ function restartGame() {
   positionX = [];
   positionY = [];
 
-  drawHitValues();
+ 
 
-  // Clear existing squares and respawn them
+  
   squares = [];
   spikes = [];
   squareNumberValue = 0; // Reset the square number value index
   initializeSquares();
   initializeSpikes();
   resetFadeInAnimation();
+  
   countdown();
 
-  // Reset display color
-  // numberDisplay.style.color = "initial"; // Reset the color of numberDisplay
-
-  // Optionally reset other game states or variables as needed
+  
 }
 
 function nextLevel() {
