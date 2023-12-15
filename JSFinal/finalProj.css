@@ -103,6 +103,18 @@ li {
   animation: rotate 3s infinite alternate ease-in-out;
 }
 
+.win {
+  height: 40px;
+  width: 450px;
+  text-align: center;
+  padding-top: 20px;
+  background-color: lightgray;
+  border: 2px solid black;
+  display: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+}
+
 #rainbow {
   bottom: 200px; /* Adjust as needed */
   left: 200px; /* Adjust as needed */

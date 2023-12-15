@@ -2,6 +2,7 @@ let phoneNumbers = [];
 const canvas = document.getElementById("gameCanvas");
 const body = document.querySelector("body");
 const ctx = canvas.getContext("2d");
+const gameArea = document.querySelector('.afterSubmission');
 
 const error = document.getElementById("submissionError");
 const gif = document.querySelector(".gif");
@@ -145,7 +146,7 @@ document
   function showGame() 
   {
   setTimeout(() => {
-    let gameArea = document.querySelector('.afterSubmission');
+    
     let hacked = document.querySelector(".hacked");
     gameArea.style.display = 'block';
     gameArea.classList.add('animate-fadeIn');
@@ -451,6 +452,13 @@ function nextLevel() {
   ballX = canvas.width / 2;
   ballY = canvas.height - ballRadius;
   lvl++;
+
+  if (lvl == lvlAmountOfTargets.length)
+  {
+    win();
+    return;
+
+  }
   dx = 0;
   dy = 0;
   aiming = true;
@@ -473,4 +481,15 @@ function draw() {
   checkCollision();
 
   requestAnimationFrame(draw);
+}
+
+function win()
+{
+  let winDisplay = document.querySelector(".win");
+  gameArea.style.display = "none";
+  hacked.style.display = "none";
+  body.style.backgroundColor = 'lightblue';
+  winDisplay.textContent = `congrats, your number (${formatPhoneNumber(phoneNumbers.join(""))}) was submitted `;
+  winDisplay.style.display = 'block';
+
 }
