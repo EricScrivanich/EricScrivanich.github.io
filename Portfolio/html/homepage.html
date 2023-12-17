@@ -1,29 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "../css/style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>HomePage</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <div class="navbar">
-        <a href="homepage.html">Me</a>
-        <span> | </span>
-        <a href="projectpage.html">Projects</a>
-        <span> | </span>
-       
+      <a href="homepage.html">Me</a>
+      <span> | </span>
+      <a href="projectpage.html">Projects</a>
+      <span> | </span>
     </div>
-    <h1>
-        About Me
-    </h1>
-    <img src="../img/Headshot.jpg" alt="Me" width="500">
-    <p>
-        I am that guy
-    </p>
+    <h1>About Me</h1>
 
-    
-</body>
+    <div class="flex">
+      <img src="../img/Headshot.jpg" alt="Me" width="500" />
+      <p></p>
+
+      <div id="photo-gallery">
+        <div class="image-container">
+          <img
+            src="../img/TFCover.jpg"
+            alt="Cover"
+            class="gallery-image"
+            style="display: block; opacity: 1"
+          />
+          <img src="../img/TF1.jpg" alt="Page 1" class="gallery-image" />
+          <img src="../img/TF2.jpg" alt="Page 2" class="gallery-image" />
+          <img src="../img/TF3.jpg" alt="Page 3" class="gallery-image" />
+          <img src="../img/TF4.jpg" alt="Page 4" class="gallery-image" />
+          <img src="../img/TF5.jpg" alt="Page 5" class="gallery-image" />
+          <img src="../img/TF6.jpg" alt="Page 6" class="gallery-image" />
+          <img src="../img/TF7.jpg" alt="Page 7" class="gallery-image" />
+          <img src="../img/TF8.jpg" alt="Page 8" class="gallery-image" />
+          <img src="../img/TF9.jpg" alt="Page 9" class="gallery-image" />
+          <img src="../img/TF10.jpg" alt="Page 10" class="gallery-image" />
+
+          <!-- Add more images as needed -->
+        </div>
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+    <script src="../js/portfolio.js"></script>
+  </body>
 </html>
