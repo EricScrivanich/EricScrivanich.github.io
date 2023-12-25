@@ -39,10 +39,11 @@
       }
 
       .star {
-        transition: 4s 1s all ease-in-out;
+        transition: transform 4s 1s ease-in-out;
+        cursor: pointer; /* Optional: changes the cursor on hover */
       }
 
-      .star:hover {
+      .rotate {
         transform: rotate(360deg);
       }
 
@@ -69,7 +70,7 @@
       <p class="poo">Mary-Gracy-Poo!</p>
     </div>
 
-    <img class="star" src="../img/Marigracetar.png" alt="marrace" />
+    <img class="star" src="../img/Marigracetar.png" alt="marigrace" onclick="this.classList.toggle('rotate')" />
 
     <p class="bot">
       So here's to you, MarigraceyPoo, our family's shining star!
