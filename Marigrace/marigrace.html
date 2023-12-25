@@ -24,11 +24,13 @@
         font-size: 20px;
         text-align: center;
         margin-top: 50px;
+        background-color: lightblue;
       }
       .poem {
         max-width: 600px;
         margin: auto;
         padding: 20px;
+        margin-top: 450px;
         font-family: "Carattere", cursive;
         font-family: "Luckiest Guy", cursive;
       }
@@ -47,18 +49,42 @@
         transform: rotate(360deg);
       }
 
+      #slideshow-container {
+        position: relative;
+        max-width: 300px;
+        margin: 20px auto;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: opacity 1s ease-in-out;
+        opacity: 0;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
       @media screen and (max-width: 460px) {
         .poem {
           max-width: 400px;
         }
         .star {
-          width: 300px;
+          width: 400px;
         }
       }
     </style>
   </head>
   <body>
     <h1>My little Marigracey Poo</h1>
+
+    <div id="slideshow-container">
+      <img class="slide" src="mg1.jpg" alt="Marigracey" />
+      <img class="slide" src="mg1.jpg" alt="Marigracey" />
+    </div>
+
     <div class="poem">
       <p>I love MarigracyPoo,</p>
       <p>She is so lovely, and she is so nice.</p>
@@ -70,10 +96,35 @@
       <p class="poo">Mary-Gracy-Poo!</p>
     </div>
 
-    <img class="star" src="../img/Marigracetar.png" alt="marigrace" onclick="this.classList.toggle('rotate')" />
+    <img
+      class="star"
+      src="mgStar.png"
+      alt="marigrace"
+      onclick="this.classList.toggle('rotate')"
+    />
 
     <p class="bot">
       So here's to you, MarigraceyPoo, our family's shining star!
     </p>
+
+    <script>
+      var images = ["mg1.jpg", "mg2.jpg", "mg3.jpg"];
+      var currentIndex = 0;
+      var slides = document.querySelectorAll(".slide");
+      slides[0].classList.add("active");
+
+      setInterval(function () {
+        var nextIndex = (currentIndex + 1) % images.length;
+        slides[1].src = images[nextIndex];
+        slides[1].classList.add("active");
+        slides[0].src = images[currentIndex];
+
+        setTimeout(function () {
+          slides[0].src = images[nextIndex];
+          slides[1].classList.remove("active");
+          currentIndex = nextIndex;
+        }, 1000); // Corresponds to the CSS transition time
+      }, 5000); // Change image every 5000 milliseconds (5 seconds)nge image every 5000 milliseconds (5 seconds)
+    </script>
   </body>
 </html>
