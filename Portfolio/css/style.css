@@ -5,9 +5,16 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: #e5e5f7;
-opacity: 0.8;
-background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #444cf755, #444cf7 );
+
+
+  background-color: #c3c3f7;
+opacity: 0.4;
+background-image:  linear-gradient(135deg, #bbabde 25%, transparent 25%), linear-gradient(225deg, #bbabde 25%, transparent 25%), linear-gradient(45deg, #bbabde 25%, transparent 25%), linear-gradient(315deg, #bbabde 25%, #c3c3f7 25%);
+background-position:  10px 0, 10px 0, 0 0, 0 0;
+background-size: 10px 10px;
+background-repeat: repeat;
+
+
 z-index: -1;
 }
 
