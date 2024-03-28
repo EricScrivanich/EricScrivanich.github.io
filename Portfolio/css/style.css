@@ -1,23 +1,58 @@
-
-
-  
-.pattern{
+.pattern {
   position: fixed;
   width: 100vw;
   height: 100vh;
 
-
   background-color: #c3c3f7;
-opacity: 0.4;
-background-image:  linear-gradient(135deg, #bbabde 25%, transparent 25%), linear-gradient(225deg, #bbabde 25%, transparent 25%), linear-gradient(45deg, #bbabde 25%, transparent 25%), linear-gradient(315deg, #bbabde 25%, #c3c3f7 25%);
-background-position:  10px 0, 10px 0, 0 0, 0 0;
-background-size: 10px 10px;
-background-repeat: repeat;
+  opacity: 0.4;
+  background-image: linear-gradient(135deg, #bbabde 25%, transparent 25%),
+    linear-gradient(225deg, #bbabde 25%, transparent 25%),
+    linear-gradient(45deg, #bbabde 25%, transparent 25%),
+    linear-gradient(315deg, #bbabde 25%, #c3c3f7 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 10px 10px;
+  background-repeat: repeat;
 
-
-z-index: -1;
+  z-index: -1;
+}
+body {
+  background-color: rgb(195, 233, 255);
 }
 
+.header-container {
+  display: flex;
+
+  align-items: center;
+  position: absolute;
+  top: -5px;
+
+  position: sticky;
+
+  z-index: 1000;
+  top: -10px;
+  width: 100%;
+  height: 10vw;
+  background: linear-gradient(
+    to bottom,
+    rgb(47, 120, 163) 80%,
+    /* Start transparent */ rgb(195, 233, 255, 0) 100%
+      /* End with a darker, more opaque color */
+  );
+  /* Add overflow hidden to contain the pseudo-element */
+}
+
+.navbar {
+  display: flex;
+  margin-left: auto;
+}
+
+.header-image {
+  position: relative; /* Needed for absolute positioning of the pseudo-element */
+  height: 90%;
+  max-height: 4.8vw;
+  height: auto;
+  margin-right: 20px;
+}
 
 #photo-gallery {
   position: relative;
@@ -33,6 +68,68 @@ z-index: -1;
 }
 .flex {
   display: flex;
+  flex-wrap: wrap; /* Allows items to wrap if necessary */
+}
+
+.flexSplit1 {
+  flex: 0 1 60%;
+  padding-right: 50px; /* Adjust the padding as needed */
+  box-sizing: border-box;
+  /* Do not grow, but can shrink, start at 60% of the parent width */
+}
+
+.flexSplit2 {
+  margin-top: 20vh;
+  flex: 0 1 40%; /* Do not grow, but can shrink, start at 40% of the parent width */
+}
+.flexSplit {
+  flex: 0 1 50%;
+}
+
+.productDiv {
+  /* flex: 1 1 50%; */
+  /* max-width: 50vw; */
+
+  margin-left: 20px;
+  margin-top: 50px;
+}
+.productDiv h2 {
+  /* flex: 1 1 50%; */
+  /* max-width: 50vw; */
+  margin-bottom: 10px;
+}
+
+.productDiv p {
+  /* flex: 1 1 50%; */
+  /* max-width: 50vw; */
+  margin-top: 0px;
+}
+
+.image-description {
+  width: 40vw; /* Max width of the container */
+  max-width: 650px;
+  min-width: 300px;
+
+  /* Make the container responsive */
+
+  /* Prevents image overflow */
+}
+
+.responsive-image {
+  outline: black solid 3px;
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 20px;
+}
+
+.description {
+  width: 70vw;
+  max-width: 1000px;
+}
+
+.description h2 {
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 .gallery-image {
