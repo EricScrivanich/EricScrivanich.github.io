@@ -5,33 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
     <title>Projects</title>
+    <style>
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+     body {
+        background: linear-gradient(
+          to bottom,
+
+          rgb(0, 0, 0) 0%,
+
+          rgb(43, 43, 43) 100%
+        );
+      }
+      .video-container {
+        display: flex;
+        margin-top: 50px;
+        justify-content: center; /* Horizontally center the content */
+        align-items: center; /* Vertically center the content, if needed */
+        width: 100%; /* Take up full width to center within */
+      }
+
+      .video-container iframe {
+        /* Optional: set a max-width to ensure the iframe is not too wide on larger screens */
+
+        width: 560px;
+        height: 315px;
+        margin-bottom: 100px;
+      }
+      
+
+  .description {
+  
+  flex: 0 1 40%;
+  color: white;
+  /* width: 40%; */
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 10%;
+}
+
+.image-description {
+  flex: 0 1 30%; /* This controls the flex item's size */
+  margin-bottom: 0;
+  margin-top: 60px;
+}
+.image-description img {
+  width: 110%; /* Make the image responsive to its container's width */
+  height: 110%; /* Set the height to follow the container's height, adjust as needed */
+  object-fit: contain; /* Or 'cover', depending on the desired effect */
+  object-position: center; /* Center the image within its container */
+}
+    </style>
+
   </head>
   <body>
-    <div class="navbar">
-      <a href="homepage.html">Me</a>
-      <span> | </span>
-      <a href="projectpage.html">Projects</a>
-      <span> | </span>
+    <div
+      class="header-container"
+      style="background-color: rgb(60, 60, 60); border-bottom: 2px solid rgb(52, 176, 63)"
+    >
+      <div class="navbar">
+        <a href="homepage.html">Me</a>
+        <span> | </span>
+        <a href="projectpage.html">Projects</a>
+        <span> | </span>
+      </div>
     </div>
 
-    <h2>"Alienation"</h2>
+    <div class = "centerHeader">
+          <img src="../img/Titles/TitleAlien.png" alt="Title" class="header-image" />
 
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/AE4QuI0GiqY?si=fmcCw16U7xQLvdfW"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-    ></iframe>
+    </div>
 
-    This project was done within my Image class for my major, which I took in an
-    intnesive short-form summer course format. The goals of this project was to
-    simply make a video under a minute using any form of animations and
-    keyframes. However, I must of not seen the under one minute requirement, and
-    went way over the top. In only a few days I managed to make this full movie,
-    making every aspect, even the song near the end. I had a blast making this
-    and I hope you enjoy as well!
+    <div class="flex">
+      <div class="description">
+        <h2>Description</h2>
+        <p>
+          This project was done within my Image class for my major, which I took
+          in an intnesive short-form summer course format. The goals of this
+          project was to simply make a video under a minute using any form of
+          animations and keyframes. However, I must of not seen the under one
+          minute requirement, and went way over the top. In only a few days I
+          managed to make this full movie, making every aspect, even the song
+          near the end. I had a blast making this and I hope you enjoy as well!
+        </p>
+      </div>
+      <div class="image-description">
+     
+      </div>
+    </div>
+
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/AE4QuI0GiqY?si=fmcCw16U7xQLvdfW"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <script src="../js/portfolio.js"></script>
   </body>
 </html>

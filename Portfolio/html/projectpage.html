@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
     <title>Projects</title>
+    <style>
+ html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: rgb(195, 233, 255);
+      }
+
+      #flex
+      {
+        margin-left: 20px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+.titleLink {
+  
+  padding-top: 30px;
+  position: relative;
+  left: 30px;
+  width: 400px;
+  height: 150px;
+   display: flex;
+   flex-wrap: wrap;
+   
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 15%;
+
+}
+
+.titleLink:hover{
+bottom: 10px;
+left: 25px;
+  background-color: rgba(255, 255, 255, 0.227);
+}
+
+
+
+a{
+  
+  text-decoration: none;
+}
+
+.titleLink img 
+{
+  width: 100%;
+  object-fit: contain;
+}
+
+
+    </style>
   </head>
   <body>
     <div class="navbar">
@@ -16,32 +69,34 @@
 
     <h1>Projects</h1>
 
-    <div class="flex">
+    <div id="flex">
         <div>
-      <h2>
-        <a href="_alienation.html">"Alienation"</a>
-      </h2>
+     <a href="_alienation.html">
+  <div class = "titleLink">
+      <img src="../img/Titles/TitleAlien.png" alt="Title">
       <p>A movie I created for my image class, you will not be disappointed.</p>
       </div>
-      <div>
-        <h2>
-        <a href="_graphics.html">Graphics</a>
-      </h2>
+
+</a>
+
+  <a href="_graphics.html">
+  <div class = "titleLink">
+      <img src="../img/Titles/TitleGraphic.png" alt="Title">
       <p>A movie I created for my image class, you will not be disappointed.</p>
-
-
-
       </div>
 
-      <div>
-        <h2>
-        <a href="_hideAndTreat.html">Product Development and Strategy</a>
-      </h2>
-      <p>Check out a product my team and I designed fromm the ground up. Involved a a healthy mix of marketing strategy, reserach, surveys and creative design.</p>
+</a>
 
-      
 
+    
+
+    <a href="_hideandtreat.html">
+  <div class = "titleLink">
+      <img src="../img/Titles/TitleProductDesign.png" alt="Title">
+      <p>A movie I created for my image class, you will not be disappointed.</p>
       </div>
+
+</a>
     </div>
   </body>
 </html>

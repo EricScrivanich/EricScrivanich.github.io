@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Projects</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: rgb(195, 233, 255);
+      }
+
+      .description {
+        flex: 0 1 40%;
+        /* width: 40%; */
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-right: 10%;
+      }
+
+      .image-description {
+        flex: 0 1 30%; /* This controls the flex item's size */
+        margin-bottom: 0;
+        margin-top: 60px;
+      }
+      .image-description img {
+        width: 110%; /* Make the image responsive to its container's width */
+        height: 110%; /* Set the height to follow the container's height, adjust as needed */
+        object-fit: contain; /* Or 'cover', depending on the desired effect */
+        object-position: center; /* Center the image within its container */
+
+        .content-block {
+          display: flex;
+          align-items: center; /* Align items vertically */
+          margin-bottom: 40px; /* Space between each content block */
+        }
+
+        .content-block:nth-child(odd) .text-block {
+          margin-right: 20px; /* Text on the right for odd blocks */
+        }
+
+        .content-block:nth-child(even) {
+          flex-direction: row-reverse; /* Reverse the order for even blocks */
+        }
+
+        .content-block:nth-child(even) .text-block {
+          margin-left: 20px; /* Text on the left for even blocks */
+        }
+
+        .text-block {
+          flex: 0 1 40%; /* Adapted from your original .description class */
+          margin-top: 0; /* Adjust top margin as needed */
+        }
+
+        .image-block {
+          flex: 0 1 30%; /* Adapted from your original .image-description class */
+          display: flex;
+          justify-content: center; /* Center the image within the block */
+        }
+
+        .image-block img {
+          width: 100%; /* Make the image responsive within its container */
+          max-width: 400px; /* Adjust maximum width as needed */
+          height: auto; /* Maintain aspect ratio */
+          object-fit: contain;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="header-container"
+      style="
+        background-color: rgb(63, 169, 245, 1);
+        border-bottom: 2px solid black;
+      "
+    >
+      <div class="navbar">
+        <a href="homepage.html">Me</a>
+        <span> | </span>
+        <a href="projectpage.html">Projects</a>
+        <span> | </span>
+      </div>
+    </div>
+    <img
+      src="../img/Titles/TitleProductDesign.png"
+      alt="Title"
+      class="header-image"
+    />
+    <div class="flex">
+      <div class="description">
+        <h2>Description</h2>
+        <p>
+          The "Hide & Treat" is a product my team and I designed which was
+          shaped through the rigorous steps of the stage-gate process.
+          Formulating several ideas throug hthe process, we narrowed our product
+          down through the industry trends, surveys and overall ROI of our new
+          product launch. We settled on the Hide & Treat, which is dog toy
+          designed for consumers who want to entertian their furry companions,
+          without the need of physical assertion or a backyard. The toy is meant
+          to be sprayed by our signiture scents, then rubbed along a trail to be
+          hidden for the dog to find, providing amazing entertainment for both
+          you and your dog, without the need for the time and effort involved in
+          playing fetch with your dog. In this page I will highlight the main
+          acheivemnts we hit along this journey.
+        </p>
+      </div>
+      <div class="image-description">
+        <img src="../img/HideAndTreat/ProductLogo.png" alt="logo" />
+      </div>
+    </div>
+
+    <!-- 
+
+  
+-->
+    <h1>Strategy</h1>
+    <h1>Strategy</h1>
+    <div class="content-block">
+      <div class="text-block">
+        <h2>Identifying Consumer Segment and their unfulfilled needs.</h2>
+        <p>
+          The first step of our producut devlopemnt process involved choosing a
+          general idea of what kind of product we wanted to create. Our team was
+          back and forth on a bunch of ideas, from drinks to mobile apps, but
+          ultimatly we felt that . With the dog toy industry in mind, we had to
+          uncover some of consumers pain points when using toys with their dogs.
+          To acheive this, we conducted simple interviews with dog owners,
+          asking open ended questions such as:
+        </p>
+        <ul>
+          <li>How often do you typically play with your dog?</li>
+          <li>What factors prevent you from playing with your dog?</li>
+          <li>What do you dislike most about dog toys in general?</li>
+          <li>
+            How often are you out of the house away from your dog, and how
+            important is it for you to find varoius ways to keep your dog
+            entertained?
+          </li>
+        </ul>
+
+        <p>
+          With this information we relaized there was a lot of pain points when
+          it comes to consumers and entertaining their furry companion. We found
+          out that most people are willing to do anyhting to make their dog
+          happy, but it is often difficult to find the time an energy to go out
+          and play with your dog everyday. This allowed us to focus our ideas on
+          something to help consumers who feel the same.
+        </p>
+      </div>
+      <div class="image-block">
+        <img
+          src="../img/HideAndTreat/ProductAbout.png"
+          alt="Consumer Segment"
+        />
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="text-block">
+        <h2>Creating Products to Help our Target Market</h2>
+        <p>
+          After identifying consumers needs, we had a better understanding the
+          gaps our product should fill in the consumers product use. With this,
+          my team and I were able to genererate hundreds of ideas through
+          several brainstorming sessions. However, as a team we had to ultimatly
+          decide on our two favorite ideas. These ideas were of course the Hide
+          & Treat, as well as the "Canine Crafter", which was an AI tool that
+          would help consumers create a dog toy prefect for their dog, being
+          both generated and 3D printed by us. Though I strongly disliked this
+          idea, I knew I could not let my personel prefernces get in the way, as
+          these two products would go head to head through a large qaulatative
+          survey. To effectively test our products, we had to create produduct
+          statements for each of our products which followed certain guidelines
+          to reflect the standard of product statments in our industry.
+          <br />
+          <br />
+
+          Before our large survey, we had to first conduct qaulatative research
+          through surveys on each of our products, mainly to understand where we
+          could make improvements in the specific product allowing us to improve
+          the product statement, which would be used in our quatative survey. To
+          conduct these interviews we went to dog centric locations such as dog
+          parks and pet stores, asking the consumer give us feedback on our
+          current product ideas. Along with the participants genreal thoughts on
+          the idea, we also asked some specific qustions regarding features of
+          the product itself such as what scents they would prefer, and what
+          material/color they would expect the final product to be.
+        </p>
+      </div>
+      <!-- Image block can be optional for some sections if you want -->
+    </div>
+
+    <script src="../js/portfolio.js"></script>
+  </body>
+</html>
