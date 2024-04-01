@@ -217,17 +217,24 @@ button {
 }
 
 #prev {
+  visibility: hidden;
   left: 10px;
   z-index: 100;
 }
 
 #next {
+  visibility: hidden;
+
   right: 10px;
   z-index: 100;
 }
 
 #photo-gallery {
   position: relative;
+  
+ 
+  background-size:auto;
+        
   margin: auto;
   width: 45%; /* Adjust as needed */
   height: 500px; /* Adjust as per your image height */
@@ -235,14 +242,14 @@ button {
 
 .gallery-image {
   position: absolute;
-  
   top: 0;
   left: 0;
   width: 100%; /* Adjust if necessary */
   height: auto; /* Adjust if necessary */
-  opacity: 0;
-  transition: opacity 1.3s ease-in;
+  opacity: 0; /* Start as invisible */
+  transition: opacity 1.2s ease-in-out;
 }
+
 
 
 

@@ -38,55 +38,88 @@ let finalWidth = originalTitleWidth;
 
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  let currentImageIndex = 0;
+  let currentImageIndex = 0; // Start at 1 to skip headshot which is index 0
+  let showGallery = false;
   const images = document.querySelectorAll(".gallery-image");
+  const headshot = document.getElementById("headshot");
+  const teleportButton = document.getElementById("teleportButton");
   const nextButton = document.getElementById("next");
   const prevButton = document.getElementById("prev");
-  const scrollTime = 9;
 
+  nextButton.style.visibility ="hidden";
+  prevButton.style.visibility ="hidden";
 
- 
-  let count;
+  // Initially, show only the headshot
+  images.forEach((img) => (img.style.opacity = "0"));
+  headshot.style.opacity = "1";
 
-  function showImage(index) {
-    images.forEach((img, idx) => {
-      img.style.opacity = idx === index ? "1" : "0";
-    });
-  }
+  teleportButton.addEventListener("click", toggleGallery);
 
-  function NextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    showImage(currentImageIndex);
-    count = scrollTime; // Reset the countdown for automatic transition
-  }
+  function toggleGallery() {
+    showGallery = !showGallery;
+    if (showGallery) {
+      // Add class to start the animation
+      headshot.classList.add("headshot-animate");
 
-  function PreviousImage() {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    showImage(currentImageIndex);
-    count = scrollTime; // Reset the countdown for automatic transition
-  }
-
-  nextButton.addEventListener("click", NextImage);
-  prevButton.addEventListener("click", PreviousImage);
-
-  showImage(currentImageIndex); // Show the first image initially
-
-  function DoCountdown() {
-    count = scrollTime;
-    let repeat = setInterval(reduce, 1000);
-  }
-
-  function reduce() {
-    if (count > 0) {
-      count--;
+      // Wait for the transition to finish before showing the gallery images
+      setTimeout(() => {
+        headshot.style.opacity = "0";
+        showButtons();
+        showImage(currentImageIndex);
+      }, 1500); // This timeout should match the transition duration
     } else {
-      NextImage();
+      // Remove class to revert the animation
+      headshot.classList.remove("headshot-animate");
+      headshot.style.opacity = "1";
+      showButtons();
+      showImage(currentImageIndex);
     }
   }
 
-  DoCountdown(); // Start the countdown for automatic transition
+  function showButtons()
+  {
+    if (showGallery)
+    {
+       nextButton.style.visibility = "visible";
+       prevButton.style.visibility = "visible";
+       nextButton.style.opacity = "1";
+       prevButton.style.opacity = "1";
+       
+
+    }
+    else 
+    {
+        nextButton.style.visibility = "hidden";
+        prevButton.style.visibility = "hidden";
+        nextButton.style.opacity = "0";
+        prevButton.style.opacity = "0";
+
+    }
+  }
+
+  function showImage(index) {
+    images.forEach((img, idx) => {
+      img.style.opacity = idx === index && showGallery ? "1" : "0";
+    });
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (showGallery) {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showImage(currentImageIndex);
+    }
+  });
+
+  prevButton.addEventListener("click", () => {
+    if (showGallery) {
+      currentImageIndex =
+        (currentImageIndex - 1 + images.length) % images.length;
+      showImage(currentImageIndex);
+    }
+  });
+
+  // Remove the countdown logic if it's not needed anymore
 });
 
 

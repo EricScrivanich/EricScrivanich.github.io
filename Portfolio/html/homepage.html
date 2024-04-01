@@ -24,6 +24,7 @@
   z-index: -1;
 }
 
+
 .image-stack {
   position: relative;
   border: 5px black solid;
@@ -35,10 +36,37 @@
 /* Absolute positioning for images within the container */
 .teleport {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 0;
   width: 100%; /* Make the images fill the container */
   z-index: 1; /* Stack the images on top of each other */
+}
+
+#headshot{
+   position: absolute;
+   opacity: 1;
+
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust if necessary */
+  height: auto; /* Adjust if necessary */
+
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Add transform to the transition */
+}
+
+.headshot-animate {
+  opacity: 0;
+  transform: scale(0) rotate(360deg); /* Scale down and rotate */
+}
+#portalGif
+{
+   position: absolute;
+   opacity: 1;
+
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust if necessary */
+  height: auto; /* Adjust if necessary */
+  z-index: -10;
 }
     </style>
   </head>
@@ -50,16 +78,17 @@
       <a href="projectpage.html">Projects</a>
       <span> | </span>
     </div>
-    <h1>About Me</h1>
+    <h1 style="margin-top: 90px;">About Me</h1>
 
     <div class="flex">
-    <div class="image-stack">
-  <img src="../img/Headshot.jpg" alt="Me" class="teleport" />
+  
+    <!-- <div class="image-stack">
+ 
   <img src="../img/HomePage/PortalBG.png" alt="Me" class="teleport" />
   <img src="../img/HomePage/PortalShadow.png" alt="Me" class="teleport" />
   <img src="../img/HomePage/PortalBottom.png" alt="Me" class="teleport" />
   <img src="../img/HomePage/PortalButton.png" alt="Me" class="teleport" />
-</div>
+</div> -->
 
  
       <p>
@@ -72,22 +101,29 @@
       </p>
 
       <div id="photo-gallery">
+        
+ <img src="../img/Headshot.jpg" alt="me" id="headshot">
+ <img src="../img/Teleport.gif" alt="me" id="portalGif">
+     
+       
         <div class="image-container">
+       
           <img
             src="../img/TFCover.jpg"
             alt="Cover"
             class="gallery-image"
            
-          />
-          <img src="../img/TF1.jpg" alt="Page 1" class="gallery-image" />
-          <img src="../img/TF2.jpg" alt="Page 2" class="gallery-image" />
-          <img src="../img/TF3.jpg" alt="Page 3" class="gallery-image" />
-          <img src="../img/TF4.jpg" alt="Page 4" class="gallery-image" />
-          <img src="../img/TF5.jpg" alt="Page 5" class="gallery-image" />
-          <img src="../img/TF6.jpg" alt="Page 6" class="gallery-image" />
-          <img src="../img/TF7.jpg" alt="Page 7" class="gallery-image" />
-          <img src="../img/TF8.jpg" alt="Page 8" class="gallery-image" />
-          <img src="../img/TF9.jpg" alt="Page 9" class="gallery-image" />
+          >
+           
+          <img src="../img/TF1.jpg" alt="Page 1" class="gallery-image" >
+          <img src="../img/TF2.jpg" alt="Page 2" class="gallery-image" >
+          <img src="../img/TF3.jpg" alt="Page 3" class="gallery-image" >
+          <img src="../img/TF4.jpg" alt="Page 4" class="gallery-image" >
+          <img src="../img/TF5.jpg" alt="Page 5" class="gallery-image" >
+          <img src="../img/TF6.jpg" alt="Page 6" class="gallery-image" >
+          <img src="../img/TF7.jpg" alt="Page 7" class="gallery-image" >
+          <img src="../img/TF8.jpg" alt="Page 8" class="gallery-image" >
+          <img src="../img/TF9.jpg" alt="Page 9" class="gallery-image" >
          
 
        
@@ -95,7 +131,11 @@
         <button id="prev">Prev</button>
         <button id="next">Next</button>
       </div>
+
+     
     </div>
+
+     <button id="teleportButton">Teleport</button>
 
     <!-- <div id="photo-gallery">
   <div id="currentDisplayedImage" class="image-container">
