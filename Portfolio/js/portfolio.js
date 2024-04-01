@@ -43,9 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let showGallery = false;
   const images = document.querySelectorAll(".gallery-image");
   const headshot = document.getElementById("headshot");
+  const portal = document.getElementById("portalGIF");
   const teleportButton = document.getElementById("teleportButton");
   const nextButton = document.getElementById("next");
   const prevButton = document.getElementById("prev");
+  let portalShown = true;
 
   nextButton.style.visibility ="hidden";
   prevButton.style.visibility ="hidden";
@@ -59,16 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleGallery() {
     showGallery = !showGallery;
     if (showGallery) {
-      // Add class to start the animation
+
+      // Add class to start the ani
+      
       headshot.classList.add("headshot-animate");
 
       // Wait for the transition to finish before showing the gallery images
       setTimeout(() => {
-        headshot.style.opacity = "0";
+        
+        
         showButtons();
         showImage(currentImageIndex);
-      }, 1500); // This timeout should match the transition duration
+         portal.style.opacity = "0";
+      }, 1500);
+      ;// This timeout should match the transition duration
     } else {
+      portal.style.opacity = "1";
+      portalShown = true;
       // Remove class to revert the animation
       headshot.classList.remove("headshot-animate");
       headshot.style.opacity = "1";
@@ -102,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
     images.forEach((img, idx) => {
       img.style.opacity = idx === index && showGallery ? "1" : "0";
     });
+
+   
   }
 
   nextButton.addEventListener("click", () => {

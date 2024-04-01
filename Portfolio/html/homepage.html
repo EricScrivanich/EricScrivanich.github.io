@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <title>HomePage</title>
     <style>
-      .pattern {
+      /* .pattern {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -22,7 +22,13 @@
   background-repeat: repeat;
 
   z-index: -1;
-}
+} */
+
+   body {
+       background-color: #ced9ed;
+
+       
+      }
 
 
 .image-stack {
@@ -57,7 +63,7 @@
   opacity: 0;
   transform: scale(0) rotate(360deg); /* Scale down and rotate */
 }
-#portalGif
+#portalGIF
 {
    position: absolute;
    opacity: 1;
@@ -67,10 +73,20 @@
   width: 100%; /* Adjust if necessary */
   height: auto; /* Adjust if necessary */
   z-index: -10;
+  transition: opacity .5s ease-in-out;
 }
     </style>
   </head>
   <body>
+
+      <div
+      class="header-container"
+      style="
+       
+        border-bottom: 2px solid black;
+      "
+    >
+</div>
     <div class="pattern"></div>
     <div class="navbar">
       <a href="homepage.html">Me</a>
@@ -103,7 +119,7 @@
       <div id="photo-gallery">
         
  <img src="../img/Headshot.jpg" alt="me" id="headshot">
- <img src="../img/Teleport.gif" alt="me" id="portalGif">
+ <img src="../img/Teleport.gif" alt="me" id="portalGIF">
      
        
         <div class="image-container">
