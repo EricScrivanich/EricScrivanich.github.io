@@ -1,37 +1,58 @@
-.pattern {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
 
-  background-color: #c3c3f7;
-  opacity: 0.4;
-  background-image: linear-gradient(135deg, #bbabde 25%, transparent 25%),
-    linear-gradient(225deg, #bbabde 25%, transparent 25%),
-    linear-gradient(45deg, #bbabde 25%, transparent 25%),
-    linear-gradient(315deg, #bbabde 25%, #c3c3f7 25%);
-  background-position: 10px 0, 10px 0, 0 0, 0 0;
-  background-size: 10px 10px;
-  background-repeat: repeat;
-
-  z-index: -1;
-}
 
 h1, h2, h3, h3, p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.test
+{
+  
+}
+.projectLink {
+   padding-top: 30px;
+   padding: 30px 20px 0 20px;
+  position: relative;
+  left: 30px;
+  width: 400px;
+  height: 150px;
+   display: flex;
+   flex-wrap: wrap;
+   border: 3px solid black;
+   border-radius: 10px;
+
+   
+   
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 15%;
+ 
+  /* Add other base styles here */
+}
+
+.projectLink:hover{
+bottom: 10px;
+left: 25px;
+  filter: drop-shadow(2px 5px 2px rgba(0, 0, 0, 0.575));
+ 
+}
+
+/* Styles for expanding the title link to fill the viewport */
+
+
 
 .header-container {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+  margin-left: 0px;
 
   
-  top: 0;
 
-  position: sticky;
+
+  position: fixed;
 
   z-index: 900;
   top: 0px;
-  width: 100%;
+  width: 110%;
+  left: 0px;
   height: 70px;
 
   /* visibility: hidden; */
@@ -47,6 +68,7 @@ h1, h2, h3, h3, p {
 .centerHeader {
   position: sticky;
   display: flex;
+  margin-top: 145px;
  
   top: 15px;
   justify-content:center;
@@ -58,23 +80,38 @@ h1, h2, h3, h3, p {
 
 .header-image {
   object-fit: contain;
+ 
   width: 450px; /* Adjust based on your requirement */
  
 }
 .navbar {
-  position: relative;
+  position: fixed;
+  z-index: 1100;
+  
+
 
   left: 15px;
-  top: 15px;
+  top: 20px;
   font-size: 25px;
 }
-
-#photo-gallery {
-  position: relative;
-  margin: auto;
-  width: 45%; /* Adjust as needed */
-  height: 500px; /* Adjust as per your image height */
+.navbar a {
+text-decoration: none;
+font-size: 27px;
+color: white;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+ -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
+.navbar a:hover
+{
+font-size: 30px;
+text-decoration: underline rgb(213, 213, 213);
+
+
+}
+
+
 
 .image-container {
   position: relative;
@@ -132,6 +169,7 @@ ul {
   position: relative;
   width: 60%;
   right: 20%;
+  min-width: 200px;
   object-fit: contain;
   
 
@@ -171,16 +209,6 @@ ul {
 
 
 
-.gallery-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* Adjust if necessary */
-  height: auto; /* Adjust if necessary */
-  opacity: 0;
-  transition: opacity 1.3s ease-in;
-}
-
 button {
   position: absolute;
   top: 50%;
@@ -190,8 +218,56 @@ button {
 
 #prev {
   left: 10px;
+  z-index: 100;
 }
 
 #next {
   right: 10px;
+  z-index: 100;
 }
+
+#photo-gallery {
+  position: relative;
+  margin: auto;
+  width: 45%; /* Adjust as needed */
+  height: 500px; /* Adjust as per your image height */
+}
+
+.gallery-image {
+  position: absolute;
+  
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust if necessary */
+  height: auto; /* Adjust if necessary */
+  opacity: 0;
+  transition: opacity 1.3s ease-in;
+}
+
+
+
+/* #photo-gallery {
+  position: relative;
+  margin: auto;
+  width: 50vw; 
+  height: 50vw;
+  overflow: hidden;
+  background: url("../img/Teleport.gif") no-repeat center center; 
+  background-size: cover; 
+}
+
+#currentDisplayedImage {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vw;
+  transition: transform 1.3s ease-in, opacity 1.3s ease-in;
+}
+
+.gallery-image {
+  max-width: 100%; 
+  max-height: 100%; 
+  opacity: 1;
+  transform-origin: center;
+} */

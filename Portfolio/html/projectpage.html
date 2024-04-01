@@ -11,9 +11,21 @@
         margin: 0;
         padding: 0;
       }
-      body {
-        background-color: rgb(195, 233, 255);
-      }
+   
+          .pattern {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+background-color: rgb(59, 121, 169);
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+          }
 
       #flex
       {
@@ -21,27 +33,9 @@
         display: flex;
         flex-wrap: wrap;
       }
-.titleLink {
-  
-  padding-top: 30px;
-  position: relative;
-  left: 30px;
-  width: 400px;
-  height: 150px;
-   display: flex;
-   flex-wrap: wrap;
-   
-    justify-content: center;
-    margin-top: 10%;
-    margin-bottom: 15%;
 
-}
 
-.titleLink:hover{
-bottom: 10px;
-left: 25px;
-  background-color: rgba(255, 255, 255, 0.227);
-}
+
 
 
 
@@ -50,7 +44,7 @@ a{
   text-decoration: none;
 }
 
-.titleLink img 
+.projectLink img 
 {
   width: 100%;
   object-fit: contain;
@@ -60,6 +54,7 @@ a{
     </style>
   </head>
   <body>
+    <div class = "pattern"></div>
     <div class="navbar">
       <a href="homepage.html">Me</a>
       <span> | </span>
@@ -72,7 +67,13 @@ a{
     <div id="flex">
         <div>
      <a href="_alienation.html">
-  <div class = "titleLink">
+  <div class = "projectLink" style=" background: linear-gradient(
+          to bottom,
+
+          rgb(0, 0, 0) 0%,
+
+          rgb(50, 50, 50) 100%
+        );">
       <img src="../img/Titles/TitleAlien.png" alt="Title">
       <p>A movie I created for my image class, you will not be disappointed.</p>
       </div>
@@ -80,7 +81,10 @@ a{
 </a>
 
   <a href="_graphics.html">
-  <div class = "titleLink">
+  <div class = "projectLink" style="   background-color: #f7f5d9;
+opacity: 1;
+background-size: 20px 20px;
+background-image:  repeating-linear-gradient(0deg, #444df783, #444df749 1px, #f7f5d9 1px, #f7f5d9);">
       <img src="../img/Titles/TitleGraphic.png" alt="Title">
       <p>A movie I created for my image class, you will not be disappointed.</p>
       </div>
@@ -91,12 +95,24 @@ a{
     
 
     <a href="_hideandtreat.html">
-  <div class = "titleLink">
+  <div class = "projectLink" style="background-color: rgb(195, 233, 255);">
       <img src="../img/Titles/TitleProductDesign.png" alt="Title">
       <p>A movie I created for my image class, you will not be disappointed.</p>
       </div>
 
 </a>
+
+
+ <a href="_websites.html">
+  <div class = "projectLink" style="   background-color: #d2d2d2; ">
+      <img src="../img/Titles/TitleWebsite.png" alt="Title">
+      <p>A movie I created for my image class, you will not be disappointed.</p>
+      </div>
+
+</a>
     </div>
+
+    <script src="../js/portfolio.js"></script>
+
   </body>
 </html>

@@ -7,10 +7,8 @@
     <title>Projects</title>
     <style>
 
-      html,
-      body {
-        margin: 0;
-        padding: 0;
+      html {
+      
         background-color: black;
       }
      body {
@@ -24,6 +22,7 @@
       }
       .video-container {
         display: flex;
+      
         margin-top: 50px;
         justify-content: center; /* Horizontally center the content */
         align-items: center; /* Vertically center the content, if needed */
@@ -31,18 +30,30 @@
       }
 
       .video-container iframe {
+        border: 3px solid rgb(52, 176, 63);
         /* Optional: set a max-width to ensure the iframe is not too wide on larger screens */
-
-        width: 560px;
-        height: 315px;
+z-index: 100;
+        width: 80vw;
+        height: 45vw;
         margin-bottom: 100px;
       }
+
+      .dot {
+  position: absolute;
+  width: 5px; /* Dot size */
+  height: 5px;
+  z-index: 0;
+  background-color: white;
+  border-radius: 50%; /* Make them circular */
+}
       
 
   .description {
-  
+  padding: 10px;
   flex: 0 1 40%;
   color: white;
+  background-color: black;
+  z-index: 100;
   /* width: 40%; */
   margin-top: 30px;
   margin-left: 20px;
@@ -68,13 +79,14 @@
       class="header-container"
       style="background-color: rgb(60, 60, 60); border-bottom: 2px solid rgb(52, 176, 63)"
     >
+     </div>
       <div class="navbar">
         <a href="homepage.html">Me</a>
         <span> | </span>
         <a href="projectpage.html">Projects</a>
         <span> | </span>
       </div>
-    </div>
+   
 
     <div class = "centerHeader">
           <img src="../img/Titles/TitleAlien.png" alt="Title" class="header-image" />
@@ -110,5 +122,37 @@
     </div>
 
     <script src="../js/portfolio.js"></script>
+
+     <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const numberOfDots = 120;
+    const container = document.body;
+
+    for (let i = 0; i < numberOfDots; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+
+      // Generate random sizes between 1px and 5px
+      const size = Math.random() * (5 - 1) + 1; // Random value between 1 and 5
+
+      // Generate random opacity between 0.4 and 0.9
+      const opacity = Math.random() * (0.9 - 0.4) + 0.4; // Random value between 0.4 and 0.9
+
+      // Set random positions within the container
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+
+      // Apply the random size, opacity, and positions
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`; // Keep height equal to width to maintain a circular shape
+      dot.style.opacity = opacity.toFixed(1); // Use toFixed(1) to limit the opacity to one decimal place
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
+
+      container.appendChild(dot);
+    }
+  });
+</script>
+
   </body>
 </html>
